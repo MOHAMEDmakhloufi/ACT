@@ -1,0 +1,26 @@
+.label {
+	-fx-text-fill: #3F2B63;
+	-fx-font-size: 14px;
+	-fx-padding: 10px 0 0 10px;
+}
+
+.text-field, .password-field{
+	-fx-min-height: 30;
+	-fx-max-width: 270;
+	
+}
+.text-field:focused, .password-field:focused{
+	
+	-fx-faint-focus-color: transparent; 
+     	-fx-focus-color: rgba(115, 0, 171,0.8); 
+
+}
+
+.button {
+	-fx-background-color: transparent;
+	-fx-border-color: #3F2B63;
+	-fx-border-radius: 5;
+	-fx-text-fill: #3F2B63;
+}
+
+
