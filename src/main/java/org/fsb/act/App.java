@@ -10,7 +10,7 @@ import java.io.IOException;
 
 
 /**
- * JavaFX App
+ * JavaFX App .
  */
 public class App extends Application {
 
@@ -18,13 +18,13 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("Main"));
+        scene = new Scene(loadFXML("sideBarAssociation"));
         stage.setScene(scene);
         stage.show();
         
     }
 
-    static void setRoot(String fxml) throws IOException {
+    static public void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
