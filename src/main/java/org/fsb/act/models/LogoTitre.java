@@ -1,4 +1,4 @@
-package models;
+package org.fsb.act.models;
 
 public class LogoTitre {
 	private byte[] logo;

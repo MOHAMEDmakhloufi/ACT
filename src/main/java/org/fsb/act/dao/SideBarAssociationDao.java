@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javafx.scene.image.Image;
-import models.LogoTitre;
+import org.fsb.act.models.LogoTitre;
 
 public class SideBarAssociationDao {
 	private static Connection connection= ConnxDB.getInstance();

@@ -9,7 +9,7 @@ import org.fsb.act.dao.SideBarAssociationDao;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import models.LogoTitre;
+import org.fsb.act.models.LogoTitre;
 
 public class SideBarAssociationService {
 	
