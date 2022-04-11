@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fsb.act.controllers.AccesFinanceController">
    <children>
       <Label layoutX="10.0" layoutY="48.0" minHeight="100.0" style="-fx-background-color: #7156DD; -fx-text-fill: white;" text="L'accés Au Finance" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
          <font>
@@ -19,7 +19,7 @@
       <VBox layoutX="40.0" layoutY="179.0" prefHeight="200.0" prefWidth="230.0" stylesheets="@css/modifierAssociation.css">
          <children>
             <Label text="accés au finance..." />
-            <TextField promptText="accés au finance...">
+            <TextField fx:id="textFieldAcces" onAction="#updateAcces" promptText="accés au finance...">
                <VBox.margin>
                   <Insets left="10.0" />
                </VBox.margin>

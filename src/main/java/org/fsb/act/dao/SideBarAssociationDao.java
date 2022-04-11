@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import javafx.scene.image.Image;
 import models.LogoTitre;
 
-public class sideBarAssociationDao {
+public class SideBarAssociationDao {
 	private static Connection connection= ConnxDB.getInstance();
 	private static PreparedStatement pst;
 	private static ResultSet rs;

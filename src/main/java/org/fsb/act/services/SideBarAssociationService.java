@@ -4,14 +4,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.fsb.act.dao.sideBarAssociationDao;
+import org.fsb.act.dao.SideBarAssociationDao;
 
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import models.LogoTitre;
 
-public class sideBarAssociationService {
+public class SideBarAssociationService {
 	
 	/**
 	 * get association et titre asscoiation from dao
@@ -20,7 +20,7 @@ public class sideBarAssociationService {
 	 * @param label
 	 */
 	public static void getLogoTitre(ImageView imageView, Label label) {
-		LogoTitre logoTitre= sideBarAssociationDao.getLogoTitre();
+		LogoTitre logoTitre= SideBarAssociationDao.getLogoTitre();
 		if(logoTitre.getTitre() != null) 
 			label.setText(logoTitre.getTitre());
 		if(logoTitre.getLogo() != null) {

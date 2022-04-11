@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import org.fsb.act.App;
-import org.fsb.act.services.sideBarAssociationService;
+import org.fsb.act.services.SideBarAssociationService;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
-public class sideBarAssociationController implements Initializable{
+public class SideBarAssociationController implements Initializable{
 	
 	@FXML
     private BorderPane borderPane;
@@ -89,7 +89,7 @@ public class sideBarAssociationController implements Initializable{
      * Display logo association et titre asscoiation from service
      */
     public void DisplayLogoAndTitre() {
-    	sideBarAssociationService.getLogoTitre(imageLogo, labelLitre);
+    	SideBarAssociationService.getLogoTitre(imageLogo, labelLitre);
     }
 
 }

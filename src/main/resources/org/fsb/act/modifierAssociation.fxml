@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
@@ -8,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane  maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorpane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fsb.act.controllers.ModifierAssociationController">
    <children>
       <Label layoutX="146.0" layoutY="79.0" minHeight="100.0" style="-fx-background-color: #7156DD; -fx-text-fill: white;" text="Modifier Association" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
          <font>
@@ -18,10 +19,10 @@
             <Insets left="40.0" />
          </padding>
       </Label>
-      <GridPane   stylesheets="@css/modifierAssociation.css" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+      <GridPane stylesheets="@css/modifierAssociation.css" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="49.8" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES"  percentWidth="0.2"  />
+          <ColumnConstraints hgrow="SOMETIMES" percentWidth="0.2" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
@@ -30,38 +31,41 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0">
                <children>
-                  <Label text="Titre" />
-                  <TextField promptText="titre...">
+                  <Label fx:id="labelTitre" text="Titre" />
+                  <TextField fx:id="textFieldTitre" promptText="titre...">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Label layoutX="10.0" layoutY="10.0" text="Le Siege" />
-                  <TextField layoutX="10.0" layoutY="27.0" promptText="Le Siege">
+                  <Label fx:id="labelSiege" layoutX="10.0" layoutY="10.0" text="Le Siege" />
+                  <TextField fx:id="textFieldSiege" layoutX="10.0" layoutY="27.0" promptText="Le Siege">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Label layoutX="10.0" layoutY="52.0" text="Email" />
-                  <TextField layoutX="10.0" layoutY="69.0" promptText="Email">
+                  <Label fx:id="labelEmail" layoutX="10.0" layoutY="52.0" text="Email" />
+                  <TextField fx:id="textFieldEmail" layoutX="10.0" layoutY="69.0" promptText="Email">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Label layoutX="10.0" layoutY="94.0" text="Telephone N°" />
-                  <TextField layoutX="10.0" layoutY="111.0" promptText="+215 29020932">
+                  <Label fx:id="labelTelephone" layoutX="10.0" layoutY="94.0" text="Telephone N°" />
+                  <TextField fx:id="textFieldTelephone" layoutX="10.0" layoutY="111.0" promptText="+215 29020932">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </TextField>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="124.0" text="Choisir un Logo">
+                        <Button fx:id="btnBrowser" mnemonicParsing="false" onAction="#handleBrowser" prefHeight="30.0" prefWidth="124.0" text="Choisir un Logo">
                            <HBox.margin>
                               <Insets left="10.0" top="20.0" />
                            </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ImageLogo" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
                               <Insets left="20.0" top="10.0" />
                            </HBox.margin>
@@ -75,32 +79,35 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
                <children>
-                  <Label text="Username" />
-                  <TextField promptText="Username">
+                  <Label fx:id="labelUsername" text="Username" />
+                  <TextField fx:id="textFieldUsername" promptText="Username">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Label layoutX="10.0" layoutY="10.0" text="Password" />
-                  <PasswordField>
+                  <Label fx:id="labelPassword" layoutX="10.0" layoutY="10.0" text="Password" />
+                  <PasswordField fx:id="textFieldPassword">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </PasswordField>
-                  <Label layoutX="10.0" layoutY="52.0" text="Confirmer" />
-                  <PasswordField>
+                  <Label fx:id="labelConfirmer" layoutX="10.0" layoutY="52.0" text="Confirmer" />
+                  <PasswordField fx:id="textFieldConfirmer">
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </VBox.margin>
                   </PasswordField>
-                  <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="82.0" style="-fx-background-color: #3F2B63; -fx-text-fill: white;" text="MODIFIER">
+                  <Button mnemonicParsing="false" onAction="#updateAssociation" prefHeight="27.0" prefWidth="82.0" style="-fx-background-color: #3F2B63; -fx-text-fill: white;" text="MODIFIER">
                      <VBox.margin>
                         <Insets left="190.0" top="80.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </VBox>
-            <Pane  style="-fx-background-color: #7156DD;" GridPane.columnIndex="1" />
+            <Pane style="-fx-background-color: #7156DD;" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </children>
