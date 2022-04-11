@@ -1,0 +1,14 @@
+.button:hover{
+	-fx-background-color :#7300AB !important;
+	-fx-scale-y: 1.1;
+}
+
+VBox {
+	-fx-background-color : #3F2B63;
+}
+
+VBox > .button{
+	-fx-text-fill: white;
+	-fx-background-color: transparent;
+}
+
