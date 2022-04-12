@@ -145,6 +145,10 @@ public class ModifierAssociationController implements Initializable{
     			InputValidation.showAlertErrorWithoutHeaderText("Record Update Failure!");
     	}
     }
+    /**
+     * test the textFields One by one
+     * @return
+     */
     public boolean validationChamps() {
     	boolean test = true;
     	labelTitre.setStyle("-fx-text-fill:#3F2B63");

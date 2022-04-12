@@ -1,0 +1,32 @@
+.label {
+	-fx-text-fill: #3F2B63;
+	-fx-font-size: 13px;
+	-fx-padding: 10px 0 0 0px;
+}
+
+
+.text-field:focused{
+	
+	-fx-faint-focus-color: transparent; 
+     	-fx-focus-color: rgba(115, 0, 171,0.8); 
+
+}
+
+.button {
+	-fx-background-color: #7300AB;
+	
+	-fx-border-radius: 5;
+	-fx-text-fill: white;
+}
+
+.table-view .column-header{
+    -fx-background-color:#B828FC;
+    
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color:#B828FC ;
+    -fx-text-fill: white;
+    -fx-padding: 0 0 5px 0;
+
+}
