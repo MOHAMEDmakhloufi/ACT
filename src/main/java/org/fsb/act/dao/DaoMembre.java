@@ -109,4 +109,31 @@ public class DaoMembre {
 		return 0;
 	}
 
+	public static int modifierMembreFromDb(Membre membre) {
+		String requete= "UPDATE MEMBRE SET prenom=?, nom=?, datedenaissance=?, profession=?, email=?, telephone=?,"
+				+ " typepiece=?, dirigeant=?, numeropieceidentite=?, image=?, copiepiece=?"
+				+ " WHERE id=?";
+		try {
+			pst= connection.prepareStatement(requete);
+			pst.setString(1, membre.getPrenom());
+			pst.setString(2, membre.getNom());
+			pst.setDate(3, java.sql.Date.valueOf(membre.getDateNaissance()));
+			pst.setString(4, membre.getProfession());
+			pst.setString(5, membre.getEmail());
+			pst.setString(6, membre.getTelephone());
+			pst.setString(7, membre.getTypePiece());
+			pst.setString(8, membre.getDirigeant());
+			pst.setLong(9, membre.getNumeroIdentite());
+			pst.setBytes(10, membre.getImage());
+			pst.setBytes(11, membre.getCopiePiece());
+			pst.setLong(12, membre.getId());
+			return pst.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
+		
+	}
+
 }
