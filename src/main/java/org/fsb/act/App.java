@@ -18,7 +18,7 @@ public class App extends Application {
     public static String dirigeant;
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("sideBarAssociation"));
+        scene = new Scene(loadFXML("Main"));
         stage.setScene(scene);
         stage.show();
         
