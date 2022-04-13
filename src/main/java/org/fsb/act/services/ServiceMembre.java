@@ -157,4 +157,9 @@ public class ServiceMembre {
 		
 		return DaoMembre.deleteMembreFromDb(id);
 	}
+
+	public static int modifierMembre(Membre membre) {
+		
+		return DaoMembre.modifierMembreFromDb(membre);
+	}
 }

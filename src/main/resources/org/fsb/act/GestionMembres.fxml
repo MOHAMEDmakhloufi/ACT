@@ -161,6 +161,9 @@
                      <graphic>
                         <Button fx:id="btnChoisirCopie" mnemonicParsing="false" onAction="#choisirCopie" text="Choisir" />
                      </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                   </Label>
                         <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" translateY="220.0">
                            <children>

@@ -245,10 +245,12 @@ public class ControllerMembre implements Initializable{
     /**
      * If you click btn reset,
      * empty all fields
+     * call initialColorLabel()
      * @param event
      */
     @FXML
     void clear() {
+    	initialColorLabel();
     	membreSelected=null;
     	prenom.setText(null);
     	nom.setText(null);
@@ -295,7 +297,24 @@ public class ControllerMembre implements Initializable{
      */
     @FXML
     void updateMembre(ActionEvent event) {
-
+    	if(membreSelected != null && validationChamps()) {
+    		try {
+				Membre membre= createMembreFromIHM();
+				membre.setId(membreSelected.getId());
+				int i=ServiceMembre.modifierMembre(membre);
+				if(i==1) {
+					InputValidation.showAlertInfoWithoutHeaderText("Record updated successfully!");
+					clear();
+					data.set(data.indexOf(membre), membre);
+				}else
+					InputValidation.showAlertErrorWithoutHeaderText("Record Update Failure!");
+					
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				InputValidation.showAlertErrorWithoutHeaderText("Record Update Failure!");
+			}
+    	}
     }
     /**
      * If you click btn Ajouter
@@ -305,29 +324,11 @@ public class ControllerMembre implements Initializable{
     @FXML
     void ajouterMembre(ActionEvent event) {
     	
-    	Membre membre= new Membre();
+    	
 		try {
 			if(validationChamps()) {
-				FileInputStream fis;
-				if(imageUser == null) {
-					fis = new FileInputStream(".//src//main//resources//org//fsb//act//images//userDefault.jpg");
-				}else
-					fis= new FileInputStream(imageUser);
-				membre.setImage(fis.readAllBytes());
-				if(copiePiece !=null) {
-					fis= new FileInputStream(copiePiece);
-					membre.setCopiePiece(fis.readAllBytes());
-				}
-				membre.setPrenom(prenom.getText());
-				membre.setNom(nom.getText());
-				membre.setDateNaissance(dateNaissance.getValue()+"");
-				membre.setProfession(profession.getText());
-				membre.setEmail(email.getText());
-				membre.setTelephone(telephone.getText());
-				membre.setNumeroIdentite(Long.parseLong(pieceIdentiteNum.getText()));
-				int indexType= typePiece.getSelectionModel().getSelectedIndex();
-				membre.setTypePiece(typePiece.getItems().get(indexType));
-				membre.setDirigeant(App.dirigeant);
+				 
+				Membre membre= createMembreFromIHM();
 				//call service
 				int i=ServiceMembre.ajouterMembre(membre);
 				if(i==1) {
@@ -340,14 +341,33 @@ public class ControllerMembre implements Initializable{
 			}
 			
 			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			InputValidation.showAlertErrorWithoutHeaderText("Registration Failed!");
 		}
     	
+    }
+    public Membre createMembreFromIHM() throws IOException {
+    	Membre membre= new Membre();
+    	FileInputStream fis= new FileInputStream(image.getImage().getUrl().split(":")[1]);
+		membre.setImage(fis.readAllBytes());
+		
+		if(copiePiece !=null) {
+			fis= new FileInputStream(copiePiece);
+			membre.setCopiePiece(fis.readAllBytes());
+		}
+		membre.setPrenom(prenom.getText());
+		membre.setNom(nom.getText());
+		membre.setDateNaissance(dateNaissance.getValue()+"");
+		membre.setProfession(profession.getText());
+		membre.setEmail(email.getText());
+		membre.setTelephone(telephone.getText());
+		membre.setNumeroIdentite(Long.parseLong(pieceIdentiteNum.getText()));
+		int indexType= typePiece.getSelectionModel().getSelectedIndex();
+		membre.setTypePiece(typePiece.getItems().get(indexType));
+		membre.setDirigeant(App.dirigeant);
+		return membre;
     }
     /**
      * test the textFields One by one
@@ -432,6 +452,7 @@ public class ControllerMembre implements Initializable{
      */
     @FXML
     void displayMembre() {
+    	
     	initialColorLabel();
     	clear();
     	int index= tableMembres.getSelectionModel().getSelectedIndex();
