@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="409.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="448.0" layoutY="75.0" text="Login" textFill="#7156ddd6">
+         <font>
+            <Font name="Segoe UI Black" size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="name" layoutX="465.0" layoutY="120.0" promptText="Association Name" />
+      <TextField fx:id="pwd" layoutX="465.0" layoutY="161.0" promptText="password" />
+      <Button fx:id="btnlogin" graphicTextGap="6.0" layoutX="465.0" layoutY="272.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="187.0" stylesheets="@css/Login.css" text="Login">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <ImageView fitHeight="372.0" fitWidth="396.0" layoutX="25.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:///C:/Users/ultrabook/Desktop/pACT/src/main/resources/org/fsb/act/images/boulePurple%201.jpg" />
+         </image>
+      </ImageView>
+      <CheckBox fx:id="remember" layoutX="465.0" layoutY="205.0" mnemonicParsing="false" stylesheets="@css/Login.css" text="Remember me" textFill="#a29797" />
+      <Label fx:id="createlabel" layoutX="488.0" layoutY="319.0" onMouseEntered="#disappear" text="Créer une association" textFill="#7156dd" />
+   </children>
+</AnchorPane>
