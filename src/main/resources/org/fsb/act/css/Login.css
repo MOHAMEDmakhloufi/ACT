@@ -1,0 +1,9 @@
+.button {
+	-fx-background-color: #3F2B63;
+	-fx-border-color: #3F2B63;
+	-fx-border-radius: 5;
+	-fx-text-fill: #FFFFFF;
+}
+.check-box > .box {
+    -fx-padding: 0.2px;
+}
