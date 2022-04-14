@@ -3,15 +3,20 @@ package org.fsb.act.controllers;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import org.fsb.act.App;
+import org.fsb.act.models.TabModel;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -19,13 +24,27 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class MainController implements Initializable{
 	
 	@FXML
 	private ListView<String> listViewMembres;
-	@FXML
-	private ListView<String> listViewDonneurs; 
+
+    @FXML
+    private ListView<String> listViewFinances;
+
+    @FXML
+    private ListView<String> listViewDashBoard;
+
+    @FXML
+    private ListView<String> listViewNecessiteux;
+
+    @FXML
+    private ListView<String> listViewEvenements;
+
+    @FXML
+    private ListView<String> listViewMonCompte;
 
     @FXML
     private TabPane tabPane;
@@ -34,8 +53,11 @@ public class MainController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		generateSubList(listViewMembres, "gestion membres");
-		generateSubList(listViewDonneurs, "gestion donneurs");
-		
+		generateSubList(listViewNecessiteux, "gestion personnes necessiteuse", "gestion familles necessiteuse");
+		generateSubList(listViewEvenements, "gestion evenments", "notification");
+		generateSubList(listViewDashBoard, "dashBoard");
+		generateSubList(listViewFinances, "cotisation des membres", "dons", "depenses", "notification");
+		generateSubList(listViewMonCompte, "parametre de compte", "log out");
 	}
 	/**
 	 * assign rows(str) to a list view
@@ -81,25 +103,39 @@ public class MainController implements Initializable{
 	
 	/**
 	 * create a new tab and load the FXML file 
+	 * @param list 
+	 * @param listView 
 	 */
-	private void selectSubList() {
-		Tab tab;
-		int index = listViewMembres.getSelectionModel().getSelectedIndex();
+	private void selectSubList(ListView<String> listView, List<TabModel> list) {
 		
-		if(listViewMembres.getItems().get(index).equals("gestion membres")) {
-			try {
-				tab= new Tab("membres", App.loadFXML("gestionMembres"));
-				
-				tabPane.getTabs().add(tab);
-				tabPane.getSelectionModel().select(tab);
-				
-				iconClose(tab);
-				
-			} catch (IOException e) {
-				
-				e.printStackTrace();
+		int index = listView.getSelectionModel().getSelectedIndex();
+		list.forEach(element ->{
+			if(listView.getItems().get(index).equals(element.getElementList())) {
+				try {
+					Tab tab= new Tab(element.getTabTitle(), App.loadFXML(element.getTabContent()));
+					
+					tabPane.getTabs().add(tab);
+					tabPane.getSelectionModel().select(tab);
+					
+					iconClose(tab);
+					
+				} catch (IOException e) {
+					
+					e.printStackTrace();
+				}
 			}
-		}
+			if(listView.getItems().get(index).equals("log out")) {
+
+				try {
+					
+					App.setRoot("Login", 600, 400);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
 		
 	}
 	/**
@@ -108,7 +144,68 @@ public class MainController implements Initializable{
 	 */
 	@FXML
     void handleListMembres(MouseEvent event) {
-		selectSubList();
+		List<TabModel> list = new ArrayList<>();
+		list.add(new TabModel("gestion membres", "membres", "gestionMembres"));
+		selectSubList(listViewMembres, list);
+    }
+	
+	@FXML
+    void handleListNecessiteux(MouseEvent event) {
+		List<TabModel> list = new ArrayList<>();
+		list.add(new TabModel("gestion personnes necessiteuse", "personnes", "personneNecessiteuse"));
+		list.add(new TabModel("gestion familles necessiteuse", "familles", "familleNecessiteuse"));
+		selectSubList(listViewNecessiteux, list);
+    }
+
+    @FXML
+    void handleListEvenements(MouseEvent event) {
+    	List<TabModel> list = new ArrayList<>();
+		list.add(new TabModel("gestion evenments", "evenements", "evenements"));
+		list.add(new TabModel("notification", "notificationV", "notificationValidation"));
+		selectSubList(listViewEvenements, list);
+    }
+
+    @FXML
+    void handleListDashBoard(MouseEvent event) {
+    	List<TabModel> list = new ArrayList<>();
+		list.add(new TabModel("dashBoard", "dashBoard", "dashBoard"));
+		selectSubList(listViewDashBoard, list);
+    }
+
+    @FXML
+    void handleListFinances(MouseEvent event) {
+    	
+    	List<TabModel> list = new ArrayList<>();
+		list.add(new TabModel("cotisation des membres", "cotisation", "cotisationDesMembres"));
+		list.add(new TabModel("dons", "dons", "Dons"));
+		list.add(new TabModel("depenses", "depenses", "depenses"));
+		list.add(new TabModel("notification", "notificationE", "notificationEvenement"));
+		selectSubList(listViewFinances, list);
+    }
+    @FXML
+    void testPermission(MouseEvent event){
+    	Stage alert= new Stage();
+    	try {
+    		if(!AlertFinanceController.permission) {
+    			listViewFinances.setDisable(true);
+    			alert.setScene(new Scene(App.loadFXML("alertAcces")));
+    			alert.showAndWait();
+    		}
+    		if(AlertFinanceController.permission) {
+    			listViewFinances.setDisable(false);
+    		}
+				
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    @FXML
+    void handleListMonCompte(MouseEvent event) {
+    	List<TabModel> list = new ArrayList<>();
+		list.add(new TabModel("parametre de compte", "monCompte", "monCompte"));
+		
+		selectSubList(listViewMonCompte, list);
     }
 	
 }

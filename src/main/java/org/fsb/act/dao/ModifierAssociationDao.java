@@ -61,4 +61,25 @@ public class ModifierAssociationDao {
 		return 0;
 	}
 
+	public static int creer(Association association) {
+		String requete="INSERT INTO ASSOCIATION(id, titre, siege, email, telephone, username, password, logo) VALUES(seqassociation.nextval,?,?,?,?,?,?,?) ";
+		try {
+			pst= connection.prepareStatement(requete);
+			
+			pst.setString(1, association.getTitre());
+			pst.setString(2, association.getSiege());
+			pst.setString(3, association.getEmail());
+			pst.setString(4, association.getTelephone());
+			pst.setString(5, association.getUsername());
+			pst.setString(6, association.getPassword());
+			pst.setBytes(7, association.getLogo());
+			
+			return pst.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 }
