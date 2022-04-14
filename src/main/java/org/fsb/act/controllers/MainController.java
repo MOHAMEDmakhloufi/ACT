@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 import org.fsb.act.App;
 import org.fsb.act.models.TabModel;
+import org.fsb.act.services.SideBarAssociationService;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +18,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Accordion;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -49,6 +52,15 @@ public class MainController implements Initializable{
     @FXML
     private TabPane tabPane;
     
+    @FXML
+    private ImageView imageLogo;
+
+    @FXML
+    private Label labelLitre;
+    
+    @FXML
+    private AnchorPane anchorPane2;
+    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -65,6 +77,7 @@ public class MainController implements Initializable{
 	 * @param str
 	 */
 	private void generateSubList(ListView<String> listView, String... str) {
+		DisplayLogoAndTitre();
 		ObservableList<String> subList= FXCollections.observableArrayList();
 		subList.addAll(str);
 		listView.setItems(subList);
@@ -90,6 +103,12 @@ public class MainController implements Initializable{
 	    	tabPane.getTabs().remove(index);
 	    	
 	    	tabPane.getSelectionModel().selectLast();
+	    	
+	    	if(tabPane.getTabs().size() ==0) {
+				
+		    	tabPane.getStyleClass().add("tabPanes");
+		    	anchorPane2.getStyleClass().add("backgroundImage");
+			}
 		});
 		
 		File file = new File(".\\src\\main\\resources\\org\\fsb\\act\\images\\close.png");
@@ -127,7 +146,7 @@ public class MainController implements Initializable{
 			if(listView.getItems().get(index).equals("log out")) {
 
 				try {
-					
+					AlertFinanceController.permission= false;
 					App.setRoot("Login", 600, 400);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -136,7 +155,11 @@ public class MainController implements Initializable{
 			}
 		});
 		
-		
+		if(tabPane.getTabs().size() !=0) {
+			
+	    	tabPane.getStyleClass().remove("tabPanes");
+	    	anchorPane2.getStyleClass().remove("backgroundImage");
+		}
 	}
 	/**
 	 * if you are clicked in the list then execute @selectSubList
@@ -185,8 +208,12 @@ public class MainController implements Initializable{
     @FXML
     void testPermission(MouseEvent event){
     	Stage alert= new Stage();
+    	alert.setOnCloseRequest(even -> {
+    	    AlertFinanceController.alreadyOpen= false;
+    	    // Save file
+    	});
     	try {
-    		if(!AlertFinanceController.permission) {
+    		if(!AlertFinanceController.permission && !AlertFinanceController.alreadyOpen) {
     			listViewFinances.setDisable(true);
     			alert.setScene(new Scene(App.loadFXML("alertAcces")));
     			alert.showAndWait();
@@ -207,5 +234,9 @@ public class MainController implements Initializable{
 		
 		selectSubList(listViewMonCompte, list);
     }
-	
+    public void DisplayLogoAndTitre() {
+    	SideBarAssociationService.getLogoTitre(imageLogo, labelLitre);
+    }
+    
+
 }

@@ -24,12 +24,14 @@ public class AlertFinanceController implements Initializable{
 	
 	private String acces;
 	public static boolean permission= false;
+	public static boolean alreadyOpen= false;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		acces= AccesFinanceService.getAccesFinance();
-		
+		alreadyOpen=true;
 	}
+	
     @FXML
     void permission(ActionEvent event) {
     	if(acces == null)
@@ -37,6 +39,7 @@ public class AlertFinanceController implements Initializable{
     	if(accesFinance.getText().equals(acces)) {
     		permission= true;
     		Stage stage= (Stage) anchorPane.getScene().getWindow();
+    		alreadyOpen= false;
     		stage.close();
     	}
     	else

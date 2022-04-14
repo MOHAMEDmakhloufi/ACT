@@ -55,9 +55,11 @@ public class LogInController implements Initializable{
 	 */
 	@FXML
     void handeLogIn(ActionEvent event) {
+		
 		Association association;
 		if(validationChamps()) {
 			Compte compte= LogInService.getCompte(username.getText());
+			
 			if(compte!= null) {
 				if(compte.getActivation().equals("desactiver")) {
 					InputValidation.showAlertErrorWithoutHeaderText("votre compte est desactiver!");
@@ -72,14 +74,16 @@ public class LogInController implements Initializable{
 				}else
 					InputValidation.showAlertErrorWithoutHeaderText("username or password is incorrect!");
 			}else if((association= associationExist()) != null) {
-				if(association.getPassword().equals(password.getText())) {
+				
+				if(association.getUsername().equals(username.getText())&&association.getPassword().equals(password.getText())) {
 					try {
 						App.setRoot("sideBarAssociation", 800, 500);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				}
+				}else 
+					InputValidation.showAlertErrorWithoutHeaderText("username or password is incorrect!");
 			}else
 				InputValidation.showAlertErrorWithoutHeaderText("username or password is incorrect!");
 		}else

@@ -1,0 +1,11 @@
+.backgroundImage{
+
+	-fx-background-image: url("tabPane1.jpg");
+	-fx-background-size: 100% 100%; 
+	
+	
+}
+.tabPanes{
+	-fx-background-color:  rgb(0, 0 ,0 );
+	-fx-opacity: 0.2;
+}
