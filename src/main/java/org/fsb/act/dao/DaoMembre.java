@@ -65,9 +65,10 @@ public class DaoMembre {
 		return membres;
 	}
 
-	public static int addMembreInDb(Membre membre) {
+	public static long addMembreInDb(Membre membre) {
 		String requete="INSERT INTO MEMBRE VALUES(SEQMEMBRE.nextval,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
+			connection.setAutoCommit(false);
 			pst= connection.prepareStatement(requete);
 			pst.setString(1, membre.getPrenom());
 			pst.setString(2, membre.getNom());
@@ -81,23 +82,35 @@ public class DaoMembre {
 			pst.setBytes(10, membre.getImage());
 			pst.setString(11, membre.getDirigeant());
 			
+			int i=pst.executeUpdate();
 			
+            if(i==1) {
+            	pst=connection.prepareStatement("select SEQMEMBRE.currval from dual");
+            	rs=pst.executeQuery();
+            	if(rs.next()) {
+
+            		
+                    connection.commit();
+                    connection.setAutoCommit(true);
+        			return  rs.getLong(1);
+            	}
+            }
             
-			return pst.executeUpdate();
-		}catch(SQLIntegrityConstraintViolationException c) {
-			return -1;
 		}
 		catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+			return 0;
 		}
 		
 		return 0;
 	}
 
 	public static int deleteMembreFromDb(long id) {
+		
 		String requete= "DELETE FROM MEMBRE WHERE id=?";
 		try {
+			connection.setAutoCommit(true);
 			pst= connection.prepareStatement(requete);
 			pst.setLong(1, id);
 			
@@ -114,6 +127,7 @@ public class DaoMembre {
 				+ " typepiece=?, dirigeant=?, numeropieceidentite=?, image=?, copiepiece=?"
 				+ " WHERE id=?";
 		try {
+			connection.setAutoCommit(true);
 			pst= connection.prepareStatement(requete);
 			pst.setString(1, membre.getPrenom());
 			pst.setString(2, membre.getNom());

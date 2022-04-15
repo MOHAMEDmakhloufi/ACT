@@ -166,7 +166,8 @@ public class ControllerMembre implements Initializable{
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-    	
+		Image img= new Image("file:.//src//main//resources//org//fsb//act//images//userDefault.jpg", image.getFitWidth(), image.getFitHeight(), true, true);
+    	image.setImage(img);
     	//etape1
     	initialiserComBoxTypePiece();
     	//etape2
@@ -330,11 +331,12 @@ public class ControllerMembre implements Initializable{
 				 
 				Membre membre= createMembreFromIHM();
 				//call service
-				int i=ServiceMembre.ajouterMembre(membre);
-				if(i==1) {
+				long i=ServiceMembre.ajouterMembre(membre);
+				if(i!=0) {
 					InputValidation.showAlertInfoWithoutHeaderText("Addition has been registered Successfully!");
+					membre.setId(i);
 					clear();
-					getAll();
+					data.add(0, membre);
 				}
 				else
 					InputValidation.showAlertErrorWithoutHeaderText("Registration Failed!");

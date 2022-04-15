@@ -98,7 +98,7 @@ public class SideBarAssociationController implements Initializable{
     @FXML
     void logOut(ActionEvent event) {
     	try {
-			App.setRoot("Login", 600, 400);
+			App.setRoot("Login", 600, 400, false);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

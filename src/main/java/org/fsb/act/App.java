@@ -21,18 +21,31 @@ public class App extends Application {
         scene = new Scene(loadFXML("login"));
         stage.setScene(scene);
         stage.show();
-        
+        stage.setResizable(false);
     }
 
-    static public void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-    static public void setRoot(String fxml, double width, double heigth) throws IOException {
+    static public void setRoot(String fxml, boolean... resizable) throws IOException {
     	Stage stage = (Stage)scene.getWindow();
-    	
         scene.setRoot(loadFXML(fxml));
+        if(resizable.length == 0)
+        	stage.setResizable(true);
+        else
+        	stage.setResizable(resizable[0]);
+    }
+    static public void setRoot(String fxml, double width, double height, boolean... resizable) throws IOException {
+    	Stage stage = (Stage)scene.getWindow();
+        scene.setRoot(loadFXML(fxml));
+        
+        double newX= stage.getX()+((stage.getWidth() - width)/2);
+ 
         stage.setWidth(width);
-    	stage.setHeight(heigth);
+        stage.setX(newX);
+    	stage.setHeight(height);
+    	
+        if(resizable.length == 0)
+        	stage.setResizable(true);
+        else
+        	stage.setResizable(resizable[0]);
     }
 
     public static Parent loadFXML(String fxml) throws IOException {

@@ -147,7 +147,7 @@ public class MainController implements Initializable{
 
 				try {
 					AlertFinanceController.permission= false;
-					App.setRoot("Login", 600, 400);
+					App.setRoot("Login", 600, 400, false);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -208,6 +208,7 @@ public class MainController implements Initializable{
     @FXML
     void testPermission(MouseEvent event){
     	Stage alert= new Stage();
+    	alert.setResizable(false);
     	alert.setOnCloseRequest(even -> {
     	    AlertFinanceController.alreadyOpen= false;
     	    // Save file
@@ -217,6 +218,7 @@ public class MainController implements Initializable{
     			listViewFinances.setDisable(true);
     			alert.setScene(new Scene(App.loadFXML("alertAcces")));
     			alert.showAndWait();
+    			
     		}
     		if(AlertFinanceController.permission) {
     			listViewFinances.setDisable(false);

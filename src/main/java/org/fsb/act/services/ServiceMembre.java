@@ -72,7 +72,7 @@ public class ServiceMembre {
         for(Membre membre: list) {
         	System.out.println(membre);
         	
-        	int i=DaoMembre.addMembreInDb(membre);
+        	long i=DaoMembre.addMembreInDb(membre);
         	if(i!=1)
         		nbErreur++;
         }
@@ -148,7 +148,7 @@ public class ServiceMembre {
 		return localData;
 	}
 
-	public static int ajouterMembre(Membre membre) {
+	public static long ajouterMembre(Membre membre) {
 		
 		return DaoMembre.addMembreInDb(membre);
 	}
