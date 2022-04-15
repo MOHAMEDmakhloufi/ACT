@@ -38,6 +38,11 @@
 		    <artifactId>jasperreports-fonts</artifactId>
 		    <version>6.19.0</version>
 		</dependency>
+		<dependency>
+		    <groupId>com.opencsv</groupId>
+		    <artifactId>opencsv</artifactId>
+		    <version>4.1</version>
+		</dependency>
     </dependencies>
     <build>
         <plugins>

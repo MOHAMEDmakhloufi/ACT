@@ -3,11 +3,11 @@ package org.fsb.act.controllers;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.fsb.act.App;
 import org.fsb.act.entities.Association;
 import org.fsb.act.services.ModifierAssociationService;
 import org.fsb.act.validation.InputValidation;
@@ -25,8 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class ModifierAssociationController implements Initializable{
-
+public class CreerAssociationController implements Initializable{
 	@FXML
     private PasswordField textFieldPassword;
 
@@ -81,10 +80,10 @@ public class ModifierAssociationController implements Initializable{
     private FileChooser fileChooser;
     private File file;
     private Stage stage;
-    private Association association;
+    private Association association= new Association();
     @Override
 	public void initialize(URL location, ResourceBundle resources) {
-    	loadDataAssociation();
+    	
     	fileChooser = new FileChooser();
 		fileChooser.getExtensionFilters().addAll(
 				new FileChooser.ExtensionFilter("All files", "* *"),
@@ -110,11 +109,11 @@ public class ModifierAssociationController implements Initializable{
     	}
     }
     /**
-     * if you are clicked update association 
+     * if you are clicked creer association 
      * @param event
      */
     @FXML
-    void updateAssociation(ActionEvent event) {
+    void creerAssociation(ActionEvent event) {
     	if(validationChamps()) {
     		
     		association.setTitre(textFieldTitre.getText());
@@ -131,18 +130,21 @@ public class ModifierAssociationController implements Initializable{
 				}
 				
 				
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
+			}  catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-    		int i= ModifierAssociationService.updateAssocition(association);
+    		int i= ModifierAssociationService.creerAssocition(association);
     		if(i==1) {
-    			InputValidation.showAlertInfoWithoutHeaderText("Record updated successfully!");
+    			InputValidation.showAlertInfoWithoutHeaderText("Record create successfully!");
+    			try {
+					App.setRoot("sideBarAssociation", 800, 500);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
     		}else
-    			InputValidation.showAlertErrorWithoutHeaderText("Record Update Failure!");
+    			InputValidation.showAlertErrorWithoutHeaderText("Record create Failure!");
     	}
     }
     /**
@@ -192,32 +194,4 @@ public class ModifierAssociationController implements Initializable{
     		btnBrowser.setStyle("-fx-text-fill:red");
     	return test;
     }
-    /**
-     * initialement load data from service
-     */
-	public void loadDataAssociation() {
-		association = ModifierAssociationService.getDataAssociation();
-		textFieldTitre.setText(association.getTitre());
-		textFieldSiege.setText(association.getSiege());
-		textFieldEmail.setText(association.getEmail());
-		textFieldTelephone.setText(association.getTelephone());
-		textFieldUsername.setText(association.getUsername());
-		textFieldPassword.setText(association.getPassword());
-		
-		try {
-			if(association.getLogo() != null) {
-				FileOutputStream fos = new FileOutputStream(".//src//main//resources//org//fsb//act//images//logoModifier.jpg");
-				fos.write(association.getLogo());
-				
-				Image image = new Image("file:.//src//main//resources//org//fsb//act//images//logoModifier.jpg", ImageLogo.getFitWidth(), ImageLogo.getFitHeight(), true, true);
-				ImageLogo.setImage(image);
-			}
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	
 }

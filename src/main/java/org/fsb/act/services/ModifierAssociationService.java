@@ -13,4 +13,9 @@ public class ModifierAssociationService {
 		
 		return ModifierAssociationDao.update(association);
 	}
+
+	public static int creerAssocition(Association association) {
+		
+		return ModifierAssociationDao.creer(association);
+	}
 }

@@ -9,9 +9,11 @@ import org.fsb.act.services.SideBarAssociationService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 public class SideBarAssociationController implements Initializable{
@@ -34,6 +36,7 @@ public class SideBarAssociationController implements Initializable{
     @FXML
     private Button btnAcces;
 
+    
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -92,4 +95,15 @@ public class SideBarAssociationController implements Initializable{
     	SideBarAssociationService.getLogoTitre(imageLogo, labelLitre);
     }
 
+    @FXML
+    void logOut(ActionEvent event) {
+    	try {
+			App.setRoot("Login", 600, 400, false);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    
 }

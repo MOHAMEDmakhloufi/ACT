@@ -3,9 +3,11 @@ package org.fsb.act.validation;
 
 
 import java.text.SimpleDateFormat;
+import java.util.Optional;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
@@ -34,7 +36,7 @@ public class InputValidation {
 		// Header Text: null
 		alert.setHeaderText(null);
 		alert.setContentText(msg);
-
+		
 		alert.showAndWait();
 	}
 	/**
@@ -50,5 +52,13 @@ public class InputValidation {
 		alert.setContentText(msg);
 
 		alert.showAndWait();
+	}
+	
+	public static Optional<ButtonType> showConfirmation(String msg){
+		
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+	    alert.setTitle("CONFIRMATION");
+	    alert.setHeaderText(msg);
+	    return alert.showAndWait();
 	}
 }
