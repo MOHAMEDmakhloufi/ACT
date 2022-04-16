@@ -23,7 +23,7 @@ public class LogInDao {
 			if(rs.next()) {
 				compte.setUsername(rs.getString(1));
 				compte.setPassword(rs.getString(2));
-				compte.setActivation(rs.getString(3));
+				compte.setActive(rs.getInt(3));
 				return compte;
 			}
 		} catch (SQLException e) {

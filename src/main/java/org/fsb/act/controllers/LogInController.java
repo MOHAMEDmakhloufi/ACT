@@ -61,7 +61,7 @@ public class LogInController implements Initializable{
 			Compte compte= LogInService.getCompte(username.getText());
 			
 			if(compte!= null) {
-				if(compte.getActivation().equals("desactiver")) {
+				if(compte.getActive()==0) {
 					InputValidation.showAlertErrorWithoutHeaderText("votre compte est desactiver!");
 				}else if(compte.getPassword().equals(password.getText()) ) {
 					try {

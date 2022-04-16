@@ -8,7 +8,7 @@ public class ConnxDB {
     private static Connection connexion;
 
     private final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe";
-    private final String USER = "ACT1";
+    private final String USER = "act";
     private final String PASS = "act";
 
     private ConnxDB() throws SQLException{
