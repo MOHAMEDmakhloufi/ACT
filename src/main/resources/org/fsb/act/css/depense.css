@@ -1,0 +1,71 @@
+.label {
+	-fx-text-fill: #3F2B63;
+	-fx-font-size: 13px;
+	-fx-padding: 10px 0 0 0px;
+}
+
+.text-field{
+	-fx-min-height: 35;
+	-fx-max-width: 300;
+	
+}
+
+.text-field:focused{
+	
+	-fx-faint-focus-color: transparent; 
+     	-fx-focus-color: rgba(115, 0, 171,0.8); 
+
+}
+
+.button {
+	-fx-background-color: #7300AB;
+	
+	-fx-border-radius: 5;
+	-fx-text-fill: white;
+}
+
+.table-view .column-header{
+    -fx-background-color:#B828FC;
+    
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color:#B828FC ;
+    -fx-text-fill: white;
+    -fx-padding: 0 0 5px 0;
+
+}
+
+.radio-button{
+    -fx-text-fill: #3F2B63;
+}
+
+.radio-button .radio {
+    -fx-border-width: 1px;
+    -fx-border-color: #3F2B63;
+    -fx-background-color: white;
+    -fx-background-image: null;
+    -fx-border-radius: 15px;
+    -fx-padding: 4px;
+    
+}
+.radio-button .radio:selected {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:armed {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:determinate {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:indeterminate {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button .dot {
+    -fx-background-radius: 15px;
+    
+}
