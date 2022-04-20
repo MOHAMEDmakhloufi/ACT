@@ -105,8 +105,6 @@ public class CompteAssociationController implements Initializable{
  	}
   	
   	 
-  	
-  	
     public boolean validationChamps() {
     	boolean test = true;
     	lusername.setStyle("-fx-text-fill:#3F2B63");

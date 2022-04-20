@@ -5,11 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField layoutX="32.0" layoutY="26.0" promptText="search ..." style="-fx-text-box-border: #D37AFF; -fx-focus-color: #D37AFF;" />
-      <TableView layoutX="32.0" layoutY="78.0" prefHeight="316.0" prefWidth="600.0" stylesheets="@css/PersonneNecessiteuse.css">
+      <TableView layoutX="32.0" layoutY="78.0" prefHeight="316.0" prefWidth="600.0">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>

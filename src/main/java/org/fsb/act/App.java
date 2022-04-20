@@ -21,7 +21,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("evenements"));
         stage.setScene(scene);
         stage.show();
-        stage.setResizable(false);
+        //stage.setResizable(false);
     }
 
     static public void setRoot(String fxml, boolean... resizable) throws IOException {
