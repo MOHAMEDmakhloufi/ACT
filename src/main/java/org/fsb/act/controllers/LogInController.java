@@ -1,6 +1,13 @@
 package org.fsb.act.controllers;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -38,9 +45,57 @@ public class LogInController implements Initializable{
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		initialiserRememberMe();
 		if(associationExist()!= null)
 			labelCreate.setVisible(false);
 		
+	}
+	/**
+	 * show username and password initialement if the remember me is checked
+	 */
+	public void initialiserRememberMe() {
+		BufferedReader reader;
+		try {
+			reader= new BufferedReader(new FileReader(App.class.getResource("RemembreMe.txt").getPath()));
+			String line=reader.readLine();
+			if(line!= null) {
+				username.setText(line);
+				line= reader.readLine();
+				password.setText(line);
+				remember.setSelected(true);
+			}
+			
+			reader.close();
+		} catch (IOException e ) {
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	void handeCheckBox() {
+		BufferedWriter writer;
+		
+		try {
+			FileOutputStream fos = new FileOutputStream(App.class.getResource("RemembreMe.txt").getPath());
+			writer= new BufferedWriter(new OutputStreamWriter(fos) );
+			
+			if(remember.isSelected() && validationChamps() ) {
+				
+				byte[] usernameBytes= username.getText().getBytes();
+				for(byte b: usernameBytes) {
+					writer.write(b);
+				}
+				byte[] passwordBytes= password.getText().getBytes();
+				writer.newLine();
+				for(byte b: passwordBytes) {
+					writer.write(b);
+				}	
+			}else {
+				writer.nullWriter();
+			}
+			writer.close();
+		}catch (IOException e ) {
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * get association if exist from service
@@ -55,6 +110,7 @@ public class LogInController implements Initializable{
 	 */
 	@FXML
     void handeLogIn(ActionEvent event) {
+		handeCheckBox();
 		
 		Association association;
 		if(validationChamps()) {
