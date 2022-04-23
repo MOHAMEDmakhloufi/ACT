@@ -15,29 +15,24 @@ import javafx.util.Callback;
 public class EvenementService {
 
 	public static List<Evenement> getAll() {
-		Evenement evenement = new Evenement(1, "moh", "bizerte", "2022-12-07", "2022-12-25", "15:30", "17:45", 123.98, "en attente", "med.mak123");
-		Evenement evenement1 = new Evenement(2, "mo", "mestir", "2022-12-11", "2022-12-26", "12:30", "15:45", 100.98, "en attente", "mariam");
-		Evenement evenement2 = new Evenement(3, "m", "bizerte", "2022-12-07", "2022-12-25", "15:30", "17:45", 123.98, "en attente", "med.mak123");
-		
-		List<Evenement> liste = new ArrayList<>(Arrays.asList(evenement,evenement1,evenement2));
+		return EvenementDao.getAll();
 		
 		
-		return liste;
 	}
 
 	public static int supprimerEvent(long id) {
 		// TODO Auto-generated method stub
-		return 1;
+		return EvenementDao.supprimerEventFromDB(id);
 	}
 
 	public static long ajouterEvent(Evenement evenement) {
 		// TODO Auto-generated method stub
-		return 1;
+		return EvenementDao.ajouterEvenementInDB(evenement);
 	}
 
 	public static int modifierEvent(Evenement e) {
 		// TODO Auto-generated method stub
-		return 1;
+		return EvenementDao.modifierEventInDB(e);
 	}
 	public static Evenement getOneById(long id) {
 		return EvenementDao.getOneById(id);
