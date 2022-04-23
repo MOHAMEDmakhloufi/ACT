@@ -19,7 +19,7 @@
 
 .button {
 	-fx-background-color: #7300AB;
-	
+	-fx-cursor: hand;
 	-fx-border-radius: 5;
 	-fx-text-fill: white;
 }

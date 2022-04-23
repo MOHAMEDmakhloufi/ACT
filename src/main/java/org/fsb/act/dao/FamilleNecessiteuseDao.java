@@ -136,4 +136,31 @@ public class FamilleNecessiteuseDao {
 		
 		return 0;
 	}
+
+	public static FamilleNecessiteuse getOneById(long id) {
+		
+		FamilleNecessiteuse fn = new FamilleNecessiteuse();
+		String requete="SELECT * FROM FAMILLENECESSITEUSE WHERE id=?";
+		try {
+			pst= connection.prepareStatement(requete);
+			rs=pst.executeQuery();
+			if(rs.next()) {
+				fn.setId(rs.getLong(1));
+				fn.setPere(new PersonneNecessiteuse(rs.getLong(2)));
+				fn.setMere(new PersonneNecessiteuse(rs.getLong(3)));
+				//fils
+				requete="SELECT FILS FROM FILSFAMILLE WHERE FAMILLE=?";
+				pst= connection.prepareStatement(requete);
+				pst.setLong(1, fn.getId());
+				ResultSet rsFils= pst.executeQuery();
+				while(rsFils.next()) {
+					fn.getListFils().add(new PersonneNecessiteuse(rsFils.getLong(1)));
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return fn;
+	}
 }

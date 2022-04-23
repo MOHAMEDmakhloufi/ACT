@@ -26,6 +26,7 @@
 	-fx-border-color: #3F2B63;
 	-fx-border-radius: 5;
 	-fx-text-fill: #FFFFFF;
+	-fx-cursor: hand;
 }
 .table-view{
 -fx-border-color: #D37AFF;}

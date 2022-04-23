@@ -7,7 +7,7 @@
 
 <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="819.0" stylesheets="@css/depense.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fsb.act.controllers.DepenseController">
    <content>
-      <GridPane>
+      <GridPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="819.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -43,7 +43,7 @@
                            <children>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <TextField fx:id="textFieldPere" disable="true" layoutX="14.0" layoutY="2.0" promptText="vide" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <TextField fx:id="textFieldPersonne" disable="true" layoutX="14.0" layoutY="2.0" promptText="vide" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
@@ -64,12 +64,12 @@
                            <children>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <TextField fx:id="textFieldPere1" layoutX="14.0" layoutY="2.0" promptText="vide" style="-fx-background-radius: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <TextField fx:id="textFieldFamille" disable="true" layoutX="14.0" layoutY="2.0" promptText="vide" style="-fx-background-radius: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                  <children>
-                                    <Button layoutX="25.0" layoutY="2.0" minHeight="34.0" mnemonicParsing="false" onAction="#openTableViewPN" style="-fx-background-radius: 0;" text="Selectionner" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <Button layoutX="25.0" layoutY="2.0" minHeight="34.0" mnemonicParsing="false" onAction="#openTableViewFN" style="-fx-background-radius: 0;" text="Selectionner" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -138,8 +138,8 @@
                   <Insets left="50.0" top="50.0" />
                </padding>
                <children>
-                  <TextField layoutX="52.0" layoutY="83.0" maxWidth="1.7976931348623157E308" minWidth="200.0" onKeyTyped="#searchDepenses" promptText="Search" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <TableView fx:id="tableDepenses" layoutX="71.0" layoutY="138.0" maxHeight="1.7976931348623157E308" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+                  <TextField fx:id="searchField" layoutX="52.0" layoutY="83.0" maxWidth="1.7976931348623157E308" minWidth="200.0" onKeyTyped="#searchDepenses" promptText="Search" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <TableView fx:id="tableDepenses" layoutX="71.0" layoutY="138.0" maxHeight="1.7976931348623157E308" onMouseClicked="#displayDepense" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
                     <columns>
                       <TableColumn fx:id="colDestination" prefWidth="75.0" text="destination" />
                       <TableColumn fx:id="colMontant" prefWidth="75.0" text="Montant" />

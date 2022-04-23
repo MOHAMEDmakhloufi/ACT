@@ -81,5 +81,19 @@ public class FamilleNecessiteuseService {
 		}
 		return localData;
 	}
+
+	public static FamilleNecessiteuse getOneById(long id) {
+		FamilleNecessiteuse fn = FamilleNecessiteuseDao.getOneById(id);
+		/*
+		//pere
+		fn.setPere(PersonneNecessiteuseService.getOneById(fn.getPere().getId()));
+		//mere
+		fn.setMere(PersonneNecessiteuseService.getOneById(fn.getMere().getId()));
+		//fils
+		for(PersonneNecessiteuse pn: fn.getListFils())
+			fn.getListFils().set(fn.getListFils().indexOf(pn), PersonneNecessiteuseService.getOneById(pn.getId()));
+			*/
+		return fn;
+	}
 	
 }

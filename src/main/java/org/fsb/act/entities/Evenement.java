@@ -19,6 +19,12 @@ public class Evenement {
 
 	
 
+	public Evenement(long id) {
+		this.id = id;
+	}
+
+
+
 	public Evenement(long id, String titre, String lieu, String dateDebut, String dateFin, String timeDebut,
 			String timeFin, Double budget, String validation, String dirigeant) {
 		super();

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.fsb.act.dao.EvenementDao;
 import org.fsb.act.entities.Evenement;
 import org.fsb.act.entities.Membre;
 
@@ -38,7 +39,9 @@ public class EvenementService {
 		// TODO Auto-generated method stub
 		return 1;
 	}
-
+	public static Evenement getOneById(long id) {
+		return EvenementDao.getOneById(id);
+	}
 	public static ObservableList<Evenement> searchEvents(ObservableList<Evenement> data, String text) {
 		ObservableList<Evenement>  localData= FXCollections.observableArrayList();
 		for(Evenement e: data) {

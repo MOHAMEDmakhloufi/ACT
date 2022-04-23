@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 public class InputValidation {
 	
 	public static boolean isFieldNotEmpty(TextField textField) {
-		return (textField.getText().length() != 0 || !textField.getText().isEmpty() );
+		return (textField.getText()!= null &&( textField.getText().length() != 0 || !textField.getText().isEmpty()) );
 	}
 	public static boolean isFieldNumber(TextField textField) {
 		return (textField.getText().matches("([0-9]+(\\.[0-9]+)?)?"));

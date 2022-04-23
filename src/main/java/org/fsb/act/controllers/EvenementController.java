@@ -188,7 +188,10 @@ public class EvenementController implements Initializable {
     	if(eventSelected != null && validationChamps()) {
     		
 				Evenement e= createEventFromIHM();
-				e.setValidation(eventSelected.getValidation());
+				if(e.getBudget() != eventSelected.getBudget())
+					e.setValidation("en attente");
+				else
+					e.setValidation(eventSelected.getValidation());
 				e.setId(eventSelected.getId());
 				int i=EvenementService.modifierEvent(e);
 				if(i==1) {

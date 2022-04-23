@@ -1,0 +1,31 @@
+.label {
+	-fx-text-fill: #3F2B63;
+	-fx-font-size: 13px;
+	-fx-padding: 10px 0 0 0px;
+}
+.sousLabel{
+	-fx-padding: 0px 0px 0px 20px;
+}
+.button {
+	
+	-fx-cursor: hand;
+	-fx-border-radius: 5;
+	-fx-text-fill: white;
+	-fx-pref-width:100;
+}
+.accepter{
+	-fx-background-color: #3B8905;
+	
+}
+.refuser{
+	-fx-background-color: #D41C08;
+}
+.anchor-pane{
+	-fx-background-color: white;
+	-fx-background-radius: 50;
+	-fx-border-color: #7300AB;
+	-fx-border-white:1;
+	-fx-border-radius: 50;
+	-fx-padding: 10px 10px 10px 30px;
+	-fx-min-height: 145px;
+}

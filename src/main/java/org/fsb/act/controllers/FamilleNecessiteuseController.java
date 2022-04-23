@@ -82,6 +82,7 @@ public class FamilleNecessiteuseController implements Initializable {
 	private SelectionnerPersonneController selectionnerPersonneController;
 	private ObservableList<FamilleNecessiteuse>  data;
 	private FamilleNecessiteuse familleNecessiteuse;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//load the file selectionnerPersonneN 
