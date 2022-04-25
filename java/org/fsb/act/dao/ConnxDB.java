@@ -25,7 +25,7 @@ public class ConnxDB {
     public static DatabaseChangeRegistration dcr;
     
     private final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe";
-    private final String USER = "act";
+    private final String USER = "ACT1";
     private final String PASS = "act";
 
     private ConnxDB() throws SQLException{

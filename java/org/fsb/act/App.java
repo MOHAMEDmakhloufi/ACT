@@ -22,7 +22,11 @@ public class App extends Application {
     public static String dirigeant="med.mak";
     @Override
     public void start(Stage stage) throws IOException {
+<<<<<<< HEAD:src/main/java/org/fsb/act/App.java
         scene = new Scene(loadFXML("dons"));
+=======
+        scene = new Scene(loadFXML("PersonneNecessiteuse"));
+>>>>>>> nexus:java/org/fsb/act/App.java
         stage.setScene(scene);
         stage.show();
         //stage.setResizable(false);

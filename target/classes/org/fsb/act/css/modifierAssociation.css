@@ -22,5 +22,13 @@
 	-fx-border-radius: 5;
 	-fx-text-fill: #3F2B63;
 }
+.table-view .column-header{
+    -fx-background-color:#D37AFF;
+    
+}
 
+.table-view .column-header-background .label{
+    -fx-background-color:#D37AFF ;
+    -fx-text-fill: white;
+    -fx-padding: 0 0 5px 0;}
 

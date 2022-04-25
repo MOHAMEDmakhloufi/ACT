@@ -9,10 +9,13 @@ import java.util.List;
 
 import org.fsb.act.entities.Compte;
 
+<<<<<<< HEAD:src/main/java/org/fsb/act/dao/CompteAssociationDao.java
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+=======
+>>>>>>> nexus:java/org/fsb/act/dao/CompteAssociationDao.java
 public class CompteAssociationDao {
 	private static Connection connection= ConnxDB.getInstance();
 	private static PreparedStatement pst;
