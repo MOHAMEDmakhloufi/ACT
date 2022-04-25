@@ -19,7 +19,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
-
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleStringProperty;
 public class FamilleNecessiteuseService {
 
 	public static List<FamilleNecessiteuse> getAll() {
@@ -38,7 +40,7 @@ public class FamilleNecessiteuseService {
 		*/
 		FamilleNecessiteuse f1= new FamilleNecessiteuse();
 		f1.setId(1);
-		f1.setPere(new PersonneNecessiteuse(1, "imed", "mak", "bizerte"));
+		f1.setPere(new PersonneNecessiteuse((SimpleLongProperty)1, (SimpleStringProperty)"imed", (SimpleStringProperty)"mak", (SimpleStringProperty)"bizerte"));
 		f1.setMere(new PersonneNecessiteuse(2, "sonia", "mak"));
 		f1.getListFils().add(new PersonneNecessiteuse(1, "mohamed", "mak"));
 		f1.getListFils().add(new PersonneNecessiteuse(3, "sami", "mak"));

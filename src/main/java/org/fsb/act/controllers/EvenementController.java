@@ -272,11 +272,11 @@ public class EvenementController implements Initializable {
     		labelLieu.setStyle("-fx-text-fill:red");
     		test=false;
     	}
-    	if(!InputValidation.isFieldNotEmpty(timeDateDebut)||(dateDebut.getValue()==null)) {
+    	if(!InputValidation.isFieldNotEmpty(timeDateDebut)|| !InputValidation.isFieldTime(timeDateDebut)||(dateDebut.getValue()==null)) {
     		labelDateDebut.setStyle("-fx-text-fill:red");
     		test=false;
     	}
-    	if(!InputValidation.isFieldNotEmpty(timeDateFin)||(dateFin.getValue()==null)) {
+    	if(!InputValidation.isFieldNotEmpty(timeDateFin) || !InputValidation.isFieldTime(timeDateFin) ||(dateFin.getValue()==null)) {
     		labelDateFin.setStyle("-fx-text-fill:red");
     		test=false;
     	}

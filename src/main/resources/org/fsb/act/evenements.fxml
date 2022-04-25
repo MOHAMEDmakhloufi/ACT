@@ -63,7 +63,7 @@
                           </rowConstraints>
                            <children>
                                     <DatePicker fx:id="dateDebut" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
-                                    <TextField fx:id="timeDateDebut" prefHeight="31.0" prefWidth="63.0" promptText="Time" GridPane.columnIndex="1" />
+                                    <TextField fx:id="timeDateDebut" prefHeight="31.0" prefWidth="63.0" promptText="Time" text="00:00" GridPane.columnIndex="1" />
                            </children>
                            <VBox.margin>
                               <Insets bottom="10.0" />
@@ -79,7 +79,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                                    <TextField fx:id="timeDateFin" prefHeight="31.0" prefWidth="63.0" promptText="Time" GridPane.columnIndex="1" />
+                                    <TextField fx:id="timeDateFin" prefHeight="31.0" prefWidth="63.0" promptText="Time" text="00:00" GridPane.columnIndex="1" />
                                     <DatePicker fx:id="dateFin" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
                            </children>
                            <VBox.margin>

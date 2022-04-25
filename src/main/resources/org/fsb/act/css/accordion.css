@@ -25,3 +25,11 @@
     -fx-background-color:#430064;
     -fx-text-fill: white;
 }
+.list-view .scroll-bar:vertical{
+    -fx-pref-width: 0;
+}
+.list-view .scroll-bar:horizontal{
+    -fx-opacity: 0;
+    -fx-padding:-7;
+-fx-background-color: #3F2B63;
+}

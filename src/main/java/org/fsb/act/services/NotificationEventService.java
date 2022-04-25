@@ -20,4 +20,9 @@ public class NotificationEventService {
 		return NotificationEventDao.updateValidationFromDb(ne);
 	}
 
+	public static NotificationEvenement getOneById(long id) {
+		
+		return NotificationEventDao.getOneById(id);
+	}
+
 }

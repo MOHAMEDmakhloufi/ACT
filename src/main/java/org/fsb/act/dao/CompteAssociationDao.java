@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.fsb.act.entities.Compte;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -88,5 +89,28 @@ public class CompteAssociationDao {
 		}
 		return 0;
 	}
+
+
+
+	public static Compte getOneByUsernameFromDb(String dirigeant) {
+		String requete = "SELECT  * FROM COMPTE WHERE username=?";
+		Compte compte =null;
+		try {
+			pst= connection.prepareStatement(requete);
+			pst.setString(1, dirigeant);
+			rs= pst.executeQuery();
+			if(rs.next()) {
+				compte= new Compte(rs.getString(1),rs.getString(2),rs.getInt(3));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return compte;
+	}
+
+
+
+	
 
 }

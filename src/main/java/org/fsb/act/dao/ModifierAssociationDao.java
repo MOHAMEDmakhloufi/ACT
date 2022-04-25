@@ -82,4 +82,21 @@ public class ModifierAssociationDao {
 		return 0;
 	}
 
+	public static String getAnneeCreation() {
+		String date=null;
+		String requete = "SELECT  datecreation FROM ASSOCIATION ";
+		try {
+			pst= connection.prepareStatement(requete);
+			rs= pst.executeQuery();
+			if(rs.next()) {
+				
+				date= rs.getString(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return date;
+	}
+
 }

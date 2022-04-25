@@ -14,6 +14,11 @@ public class NotificationEvenement {
 		this.dirigeant = dirigeant;
 		this.date = date;
 	}
+	
+	public NotificationEvenement(long id) {
+		this.id = id;
+	}
+
 	public NotificationEvenement() {
 	}
 	public String getDate() {

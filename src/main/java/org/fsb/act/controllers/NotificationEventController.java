@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import org.fsb.act.App;
 import org.fsb.act.entities.FamilleNecessiteuse;
@@ -19,6 +20,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -33,16 +35,23 @@ public class NotificationEventController implements Initializable {
 	 
 	 private Map<AnchorPane, NotificationEvenement> map= new HashMap<>();
 	 
-	 
-	 @Override
+	 public static List<NotificationEventController> listControllersNotif= new ArrayList<>();
+	 /*
+	  * the destructor
+	  */
+	  
+	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		listControllersNotif.add(this); 
 		getAll();
+		
 	}
 	 /**
      * this function calls serviceMembre to receive all notifications
      */
 	 public  void getAll() {
+		 map.clear();
+		 vBox.getChildren().clear();
 		List<NotificationEvenement> notifications= NotificationEventService.getAllFromService();
 		notifications.forEach(ne -> {
 			AnchorPane ap;
@@ -59,11 +68,13 @@ public class NotificationEventController implements Initializable {
 			
 		});
 	}
+	 
 	 /**
 	  * if you clicked accepter then update validation
 	  */
 	 @FXML
 	 public void handleBtn(ActionEvent event) {
+		 
 		 Button btn=(Button) event.getSource();
 		 AnchorPane anchorPane =(AnchorPane) btn.getParent();
 		  

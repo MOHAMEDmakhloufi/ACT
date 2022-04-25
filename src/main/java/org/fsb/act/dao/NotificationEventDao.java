@@ -12,7 +12,7 @@ import org.fsb.act.entities.NotificationEvenement;
 
 public class NotificationEventDao {
 	
-	private static Connection connection= ConnxDB.getInstance();
+	private static Connection connection= ConnxDB.getInstanceOracle();
 	private static PreparedStatement pst;
 	private static ResultSet rs;
 	
@@ -47,6 +47,24 @@ public class NotificationEventDao {
 		}
 		
 		return 0;
+	}
+
+	public static NotificationEvenement getOneById(long id) {
+		NotificationEvenement ne = null;
+		String requete= "SELECT * FROM NOTIFICATIONEVENMENTS  WHERE id=?";
+		try {
+			pst= connection.prepareStatement(requete);
+			pst.setLong(1, id);
+			rs= pst.executeQuery();
+			while(rs.next()) {
+				
+				ne=new NotificationEvenement(rs.getLong(1), new Evenement(rs.getLong(2)), rs.getString(3), rs.getString(4), ""+rs.getDate(5));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ne;
 	}
 
 }

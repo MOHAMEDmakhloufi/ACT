@@ -7,6 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
+import org.fsb.act.controllers.NotificationEventController;
+import org.fsb.act.dao.ConnxDB;
 
 
 /**
@@ -15,13 +19,20 @@ import java.io.IOException;
 public class App extends Application {
 
     public static Scene scene;
-    public static String dirigeant="anonyme";
+    public static String dirigeant="med.mak";
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("notificationEvenement"));
+        scene = new Scene(loadFXML("dons"));
         stage.setScene(scene);
         stage.show();
         //stage.setResizable(false);
+        stage.setOnCloseRequest(e -> {if(ConnxDB.dcr!= null)
+			try {
+				ConnxDB.oracleConnecxion.unregisterDatabaseChangeNotification(ConnxDB.dcr);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}});
     }
 
     static public void setRoot(String fxml, boolean... resizable) throws IOException {

@@ -5,6 +5,7 @@ module org.fsb.act {
 	requires javafx.graphics;
 	requires javafx.base;
 	requires opencsv;
+	requires com.oracle.database.jdbc;
 	
 
     opens org.fsb.act to javafx.fxml;

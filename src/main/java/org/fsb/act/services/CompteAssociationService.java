@@ -7,6 +7,7 @@ import org.fsb.act.dao.CompteAssociationDao;
 
 import org.fsb.act.entities.Compte;
 
+
 import javafx.collections.ObservableList;
 
 public class CompteAssociationService {
@@ -31,5 +32,11 @@ public class CompteAssociationService {
 	
 	public static List<Compte> searchDataCompteAssociation(String key) {
 		return CompteAssociationDao.search(key);
+	}
+
+
+	public static Compte getOneById(String dirigeant) {
+		
+		return CompteAssociationDao.getOneByUsernameFromDb(dirigeant);
 	}
 }

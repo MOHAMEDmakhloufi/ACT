@@ -127,38 +127,40 @@ public class MainController implements Initializable{
 	 */
 	private void selectSubList(ListView<String> listView, List<TabModel> list) {
 		
-		int index = listView.getSelectionModel().getSelectedIndex();
-		list.forEach(element ->{
-			if(listView.getItems().get(index).equals(element.getElementList())) {
-				try {
-					Tab tab= new Tab(element.getTabTitle(), App.loadFXML(element.getTabContent()));
-					
-					tabPane.getTabs().add(tab);
-					tabPane.getSelectionModel().select(tab);
-					
-					iconClose(tab);
-					
-				} catch (IOException e) {
-					
-					e.printStackTrace();
+		if (listView.getSelectionModel().getSelectedItem() != null) {
+			int index = listView.getSelectionModel().getSelectedIndex();
+			list.forEach(element ->{
+				if(listView.getItems().get(index).equals(element.getElementList())) {
+					try {
+						Tab tab= new Tab(element.getTabTitle(), App.loadFXML(element.getTabContent()));
+						
+						tabPane.getTabs().add(tab);
+						tabPane.getSelectionModel().select(tab);
+						
+						iconClose(tab);
+						
+					} catch (IOException e) {
+						
+						e.printStackTrace();
+					}
 				}
-			}
-			if(listView.getItems().get(index).equals("log out")) {
-
-				try {
-					AlertFinanceController.permission= false;
-					App.setRoot("Login", 600, 400, false);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				if(listView.getItems().get(index).equals("log out")) {
+	
+					try {
+						AlertFinanceController.permission= false;
+						App.setRoot("Login", 600, 400, false);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-			}
-		});
-		
-		if(tabPane.getTabs().size() !=0) {
+			});
 			
-	    	tabPane.getStyleClass().remove("tabPanes");
-	    	anchorPane2.getStyleClass().remove("backgroundImage");
+			if(tabPane.getTabs().size() !=0) {
+				
+		    	tabPane.getStyleClass().remove("tabPanes");
+		    	anchorPane2.getStyleClass().remove("backgroundImage");
+			}
 		}
 	}
 	/**

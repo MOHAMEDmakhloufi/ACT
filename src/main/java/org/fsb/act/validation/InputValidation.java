@@ -25,6 +25,9 @@ public class InputValidation {
 	public static boolean isFieldEmail(TextField textField) {
 		return (textField.getText().matches("^[A-Za-z0-9]+\\.[A-Za-z0-9]+@[A-Za-z0-9]+\\.[A-Za-z]{2,6}$"));
 	}
+	public static boolean isFieldTime(TextField textField) {
+		return (textField.getText().matches("^((2[0-4])|([0-1][0-9])):[0-5][0-9]$"));
+	}
 	/**
 	 * Show a INFORMAITON Alert with header Text
 	 * @param msg
