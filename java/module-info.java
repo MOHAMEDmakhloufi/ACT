@@ -8,9 +8,10 @@ module org.fsb.act {
 	
 
     opens org.fsb.act to javafx.fxml;
-    opens org.fsb.act.entities to javafx.base, opencsv;
+    opens org.fsb.act.entities to javafx.base,opencsv;
     opens org.fsb.act.controllers to javafx.fxml;
-    
+
     exports org.fsb.act;
     exports org.fsb.act.controllers;
+    exports org.fsb.act.entities;
 }

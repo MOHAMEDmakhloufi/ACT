@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="page" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fsb.act.controllers.PersonneNecessiteuseController">
+   <children>
+      <VBox layoutX="207.0" prefHeight="500.0" prefWidth="595.0">
+         <children>
+            <VBox prefHeight="92.0" prefWidth="401.0" spacing="10.0">
+               <children>
+                  <HBox prefHeight="88.0" prefWidth="577.0" spacing="160.0">
+                     <children>
+                        <TextField fx:id="search" onKeyTyped="#search" alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="205.0" promptText="Search..." style="-fx-border-color: #D37AFF; -fx-border-radius: 8,7,6; -fx-background-color: no color;" />
+                        <HBox prefHeight="33.0" prefWidth="255.0" spacing="8.0">
+                           <children>
+                              <Button fx:id="upload"  onAction="#uploadCsvFile" mnemonicParsing="false" prefHeight="31.0" prefWidth="115.0" stylesheets="@css/PersonneNecessiteuse.css" text="Upload csv file">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="download"  onAction="#downloadCsvFile" mnemonicParsing="false" prefHeight="31.0" prefWidth="115.0" stylesheets="@css/PersonneNecessiteuse.css" text="Download csv file">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets top="30.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="9.0" left="9.0" right="9.0" top="20.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="400.0" prefWidth="499.0">
+               <children>
+                  <TableView fx:id="tablePersonnes" prefHeight="400.0" prefWidth="551.0" stylesheets="@css/PersonneNecessiteuse.css">
+                    <columns>
+                      <TableColumn fx:id="colPrenom" prefWidth="75.0" text="Prenom" />
+                      <TableColumn fx:id="colNom" prefWidth="75.0" text="Nom" />
+                        <TableColumn fx:id="colDate" prefWidth="75.0" text="Date de naissance" />
+                        <TableColumn fx:id="colTelephone" prefWidth="75.0" text="Telephone" />
+                        <TableColumn fx:id="colAdresse" prefWidth="75.0" text="Adresse" />
+                        <TableColumn fx:id="colCode" prefWidth="75.0" text="Code Postal" />
+                        <TableColumn fx:id="colProfession" prefWidth="75.0" text="Profession" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox fx:id="V1" prefHeight="500.0" prefWidth="225.0" spacing="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="575.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="lprenom" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="800.0" text="Prenom" textAlignment="CENTER" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="prenom" promptText="Prenom" style="-fx-background-color: no color; -fx-border-color: purple; -fx-border-radius: 8,7,6;" />
+            <Label text="Nom" fx:id="lnom" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nom" promptText="Nom" style="-fx-background-color: no color; -fx-border-color: purple; -fx-border-radius: 8,7,6;" />
+            <Label text="Prenom Pere" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="prenomPere" focusTraversable="false" promptText="Prenom Pere" style="-fx-background-color: no color; -fx-border-color: purple; -fx-border-radius: 8,7,6;" />
+            <Label text="Prenom du Grand-Pere" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="prenomGPere" promptText="Prenom du Grand-Pere" style="-fx-background-color: no color; -fx-border-color: purple; -fx-border-radius: 8,7,6;" />
+            <Label text="Prenom de la Mere" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="prenomMere" promptText="Prenom de la Mere" style="-fx-background-color: no color; -fx-border-color: purple; -fx-border-radius: 8,7,6;" />
+            <Label text="Nom de la Mere" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nomMere" prefHeight="10.0" prefWidth="100.0" promptText="Nom de la Mere" style="-fx-border-radius: 8,7,6; -fx-background-color: no color; -fx-border-color: purple;" VBox.vgrow="NEVER">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TextField>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="next1" onAction="#next1"  mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #861462; -fx-background-radius: 15,4,2; -fx-border-radius: 15,4,2;" text="Next &gt;&gt;" textAlignment="CENTER" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="100.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="reset1" onAction="#clear1" mnemonicParsing="false" style="-fx-background-color: #3F2B63;" text="Reset" textFill="WHITE" />
+         </children>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </VBox>
+      <VBox fx:id="V2" layoutX="-4.0" prefHeight="500.0" prefWidth="217.0" spacing="5.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="587.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="522.0" layoutY="20.0" text="Date de naissance" textAlignment="CENTER" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="dateN" promptText="Date de naissance" style="-fx-border-radius: 8,7,6; -fx-background-color: no color; -fx-border-color: purple;" />
+            <Label text="Lieu de naissance" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="lieuN" promptText="Lieu de naissance" style="-fx-border-color: purple; -fx-background-color: no color; -fx-border-radius: 8,7,6;" />
+            <Label text="Nationalite" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nationalite" promptText="Nationalite" style="-fx-background-color: no color; -fx-border-color: purple; -fx-border-radius: 8,7,6;" />
+            <Label text="Gouvernorat" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="gouvernorat" promptText="Gouvernorat" style="-fx-background-color: no color; -fx-border-color: purple; -fx-border-radius: 8,7,6;" />
+            <Label text="Etat Civil" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="etatCivil" prefWidth="150.0" style="-fx-background-color: no color; -fx-border-color: purple; -fx-border-radius: 8,7,6;" />
+            <Label text="Profession" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="profession" promptText="Profession" style="-fx-background-color: no color; -fx-border-color: purple; -fx-border-radius: 8,7,6;" />
+            <GridPane hgap="5.0" prefHeight="65.0" prefWidth="205.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="25.0" minHeight="0.0" prefHeight="13.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="26.0" minHeight="1.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="13.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="40.0" minHeight="2.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="38.0" minHeight="0.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="3.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="next2" onAction="#next2" mnemonicParsing="false" style="-fx-background-color: #861462; -fx-border-radius: 15,4,2; -fx-background-radius: 15,4,2;" text="Next &gt;&gt;" textAlignment="RIGHT" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="previous2" onAction="#previous2" mnemonicParsing="false" style="-fx-background-color: #861462; -fx-background-radius: 15,4,2;" text="&lt;&lt; Previous" textFill="WHITE" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+            <Button fx:id="reset2" onAction="#clear2" mnemonicParsing="false" style="-fx-background-color: #3F2B63;" text="Reset" textAlignment="CENTER" textFill="WHITE" />
+         </children>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </VBox>
+      <VBox fx:id="V3" prefHeight="500.0" prefWidth="235.0" spacing="5.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="565.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="522.0" layoutY="20.0" text="Piéce d'identité N°" textAlignment="CENTER" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="identite" promptText="Piéce d'identité N°" style="-fx-border-color: purple; -fx-background-insets: 0,1,2; -fx-background-radius: 8,7,6; -fx-border-radius: 8,7,6; -fx-background-color: no color;" />
+            <Label text="Type D'identité" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="typeIdentite" prefWidth="150.0" style="-fx-background-color: no colo; -fx-border-color: purple; -fx-border-radius: 8,7,6;" />
+            <Label text="Email" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="email" promptText="Email" style="-fx-border-radius: 8,7,6; -fx-border-color: purple; -fx-background-color: no color;" />
+            <Label text="Telephone" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="telephone" promptText="Telephone" style="-fx-border-color: purple; -fx-background-color: no color; -fx-border-radius: 8,7,6;" />
+            <Label text="Adresse" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="adresse" promptText="Adresse" style="-fx-border-color: purple; -fx-background-color: no color; -fx-border-radius: 8,7,6;" />
+            <Label text="Code Postal" textFill="#d363bf">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="codePostal" promptText="Code Postal" style="-fx-background-color: no color; -fx-border-color: purple; -fx-border-radius: 8,7,6;" />
+            <Button fx:id="previous3" onAction="#previous3" mnemonicParsing="false" style="-fx-background-color: #861462; -fx-background-radius: 15,4,2; -fx-border-radius: 15,4,2;" text="&lt;&lt; Previous" textFill="WHITE" />
+            <HBox maxWidth="250.0" prefHeight="25.0" prefWidth="204.0" spacing="5.0">
+               <children>
+                  <Button fx:id="reset3" onAction="#clear3" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #3F2B63;" text="Reset" textFill="WHITE" />
+                  <Button fx:id="supprimer" onAction="#supprimerPersonneN" mnemonicParsing="false" prefWidth="100.0" style="-fx-background-color: #3F2B63;" text="Supprimer" textFill="WHITE" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Button fx:id="update" onAction="#updatePersonneN" mnemonicParsing="false" prefWidth="100.0" style="-fx-background-color: #3F2B63;" text="Update" textFill="WHITE" />
+                  <Button fx:id="ajouter" onAction="#creerPersonneN" mnemonicParsing="false" prefWidth="100.0" style="-fx-background-color: #3F2B63;" text="Ajouter" textFill="#fffefe" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

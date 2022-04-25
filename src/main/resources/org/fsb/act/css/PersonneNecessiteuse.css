@@ -4,9 +4,12 @@
 	-fx-border-radius: 5;
 	-fx-text-fill: #FFFFFF;
 }
-.check-box > .box {
-    -fx-padding: 0.2px;
-}
+.table-view{
+-fx-border-color: #D37AFF;}
+
+.table-row-cell{
+-fx-border-color: #D37AFF;
+-fx-table-cell-border-color:#D37AFF;}
 .table-view .column-header{
     -fx-background-color:#D37AFF;
     

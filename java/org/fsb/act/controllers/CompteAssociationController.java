@@ -18,7 +18,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -29,8 +28,7 @@ import javafx.scene.input.MouseEvent;
 public class CompteAssociationController implements Initializable{
 	
 	@FXML
-    private TableView<Compte> tableComptes= new TableView<Compte>();
-    
+    private TableView<Compte> tableComptes= new TableView<Compte>();   
     @FXML
     private TableColumn<Compte, String> colUsername;
     @FXML
@@ -93,7 +91,7 @@ public class CompteAssociationController implements Initializable{
             
         }
     }
-  	 @Override
+   @Override
  	public void initialize(URL location, ResourceBundle resources) {
      	setCellTable();
      	loadDataCompteAssociation();
@@ -193,6 +191,7 @@ public class CompteAssociationController implements Initializable{
     			InputValidation.showAlertErrorWithoutHeaderText("Record create Failure!");
     	}
     }
+    
     public int getActivationFromToggleBtn() {
     	return (toggleBtn.getText().equals("activer"))? 1:0;
     }
