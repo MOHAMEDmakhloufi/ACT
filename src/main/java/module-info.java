@@ -6,7 +6,7 @@ module org.fsb.act {
 	requires javafx.base;
 	requires opencsv;
 	requires com.oracle.database.jdbc;
-	
+	requires jasperreports;
 
     opens org.fsb.act to javafx.fxml;
     opens org.fsb.act.entities to javafx.base, opencsv;
@@ -14,4 +14,5 @@ module org.fsb.act {
     
     exports org.fsb.act;
     exports org.fsb.act.controllers;
+    exports org.fsb.act.models;
 }

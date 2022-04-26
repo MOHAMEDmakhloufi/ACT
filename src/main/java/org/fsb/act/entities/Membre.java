@@ -20,6 +20,16 @@ public class Membre {
 	public Membre() {
 	}
 
+	public Membre(long id) {
+		this.id = id;
+	}
+
+	public Membre(long id, String prenom, String nom) {
+		this.id = id;
+		this.prenom = prenom;
+		this.nom = nom;
+	}
+
 	public Membre(long id, String prenom, String nom, String dateNaissance, String profession, String email,
 			String telephone, String typePiece, String dirigeant, long numeroIdentite, byte[] image,
 			byte[] copiePiece) {

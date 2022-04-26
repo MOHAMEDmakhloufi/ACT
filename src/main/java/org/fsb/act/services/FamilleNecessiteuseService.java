@@ -23,19 +23,23 @@ import javafx.util.Callback;
 public class FamilleNecessiteuseService {
 
 	public static List<FamilleNecessiteuse> getAll() {
-		/*
+		
 		List<FamilleNecessiteuse> list= FamilleNecessiteuseDao.getAll();
 		for(FamilleNecessiteuse fn: list) {
 			//pere
-			fn.setPere(PersonneNecessiteuseService.getOneById(fn.getPere().getId()));
+			fn.setPere(PersonneNecessiteuseService.getById(fn.getPere().getId()));
 			//mere
-			fn.setMere(PersonneNecessiteuseService.getOneById(fn.getMere().getId()));
+			fn.setMere(PersonneNecessiteuseService.getById(fn.getMere().getId()));
 			//fils
+			fn.setNbFils(fn.getListFils().size());
+			
 			for(PersonneNecessiteuse pn: fn.getListFils())
-				fn.getListFils().set(fn.getListFils().indexOf(pn), PersonneNecessiteuseService.getOneById(pn.getId()));
+				fn.getListFils().set(fn.getListFils().indexOf(pn), PersonneNecessiteuseService.getById(pn.getId()));
+			
 		}
 		return list;
-		*/
+		
+		/*
 		FamilleNecessiteuse f1= new FamilleNecessiteuse();
 		f1.setId(1);
 		f1.setPere(new PersonneNecessiteuse(1, "imed", "mak", "bizerte"));
@@ -45,7 +49,7 @@ public class FamilleNecessiteuseService {
 		f1.getListFils().add(new PersonneNecessiteuse(2, "ahmed", "mak"));
 		List<FamilleNecessiteuse> list =new ArrayList<>();
 		list.add(f1);
-		return list;
+		return list;*/
 	}
 
 	public static int supprimerFamille(long id) {
@@ -84,15 +88,16 @@ public class FamilleNecessiteuseService {
 
 	public static FamilleNecessiteuse getOneById(long id) {
 		FamilleNecessiteuse fn = FamilleNecessiteuseDao.getOneById(id);
-		/*
+		
 		//pere
-		fn.setPere(PersonneNecessiteuseService.getOneById(fn.getPere().getId()));
+		fn.setPere(PersonneNecessiteuseService.getById(fn.getPere().getId()));
 		//mere
-		fn.setMere(PersonneNecessiteuseService.getOneById(fn.getMere().getId()));
+		fn.setMere(PersonneNecessiteuseService.getById(fn.getMere().getId()));
 		//fils
+		fn.setNbFils(fn.getListFils().size());
 		for(PersonneNecessiteuse pn: fn.getListFils())
-			fn.getListFils().set(fn.getListFils().indexOf(pn), PersonneNecessiteuseService.getOneById(pn.getId()));
-			*/
+			fn.getListFils().set(fn.getListFils().indexOf(pn), PersonneNecessiteuseService.getById(pn.getId()));
+			
 		return fn;
 	}
 	

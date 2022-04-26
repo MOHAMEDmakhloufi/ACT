@@ -150,4 +150,44 @@ public class DaoMembre {
 		
 	}
 
+	public static Membre getOneById(long idMembre) {
+		Membre membre = new Membre();
+		
+		String requete= "SELECT * FROM MEMBRE WHERE id=?";
+		try {
+			pst= connection.prepareStatement(requete);
+			pst.setLong(1, idMembre);
+			rs= pst.executeQuery();
+			
+			if(rs.next()) {
+				long id= rs.getLong(1);
+				String prenom= rs.getString(2);
+				String nom= rs.getString(3);
+				String dateNaissance= ""+rs.getDate(4);
+				String profession= rs.getString(5);
+				String email= rs.getString(6);
+				String telephone= rs.getString(7);
+				long numeroIdentite= rs.getLong(8);
+				String typePiece= rs.getString(9);
+				String dirigeant= rs.getString(12);
+				
+				membre.setId(id);
+				membre.setPrenom(prenom);
+				membre.setNom(nom);
+				membre.setDateNaissance(dateNaissance);
+				membre.setProfession(profession);
+				membre.setEmail(email);
+				membre.setTelephone(telephone);
+				membre.setNumeroIdentite(numeroIdentite);
+				membre.setTypePiece(typePiece);
+				membre.setDirigeant(dirigeant);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return membre;
+	}
+
 }

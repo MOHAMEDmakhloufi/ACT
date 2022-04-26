@@ -143,6 +143,7 @@ public class FamilleNecessiteuseDao {
 		String requete="SELECT * FROM FAMILLENECESSITEUSE WHERE id=?";
 		try {
 			pst= connection.prepareStatement(requete);
+			pst.setLong(1, id);
 			rs=pst.executeQuery();
 			if(rs.next()) {
 				fn.setId(rs.getLong(1));

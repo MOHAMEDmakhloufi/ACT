@@ -16,7 +16,7 @@ public class DepenseService {
 	public static List<Depense> getAll() {
 		
 		List<Depense> list= DepenseDao.getAllFromDb();
-		/*
+		
 		list.forEach(d -> {
 			String destination=null;
 			if(d.getFamille() != 0) {
@@ -25,7 +25,7 @@ public class DepenseService {
 				String nomMere = fn.getMere().getPrenom() + fn.getMere().getNom();
 				destination= "Famille : "+nomPere + " & "+ nomMere;
 			}else if(d.getPersonneNecessiteuse() !=0) {
-				PersonneNecessiteuse pn= PersonneNecessiteuseService.getOneById(d.getPersonneNecessiteuse());
+				PersonneNecessiteuse pn= PersonneNecessiteuseService.getById(d.getPersonneNecessiteuse());
 				destination= pn.getPrenom() +" "+pn.getNom();
 			}else if(!d.getDescription().isEmpty() && d.getDescription() != null) {
 				destination= d.getDescription();
@@ -33,11 +33,11 @@ public class DepenseService {
 			d.setDestination(destination);	
 				
 		});
-		*/
-		list.add(new Depense(1, 1, 0, null, 140.0, "22/09/21", "med.mak", "Famille : ahmed said & lamia ammar")) ;
+		
+		/*list.add(new Depense(1, 1, 0, null, 140.0, "22/09/21", "med.mak", "Famille : ahmed said & lamia ammar")) ;
 		list.add(new Depense(2, 0, 1, null, 370.0, "22/09/21", "med.mak", "mayssa oueslati")) ;
 		list.add(new Depense(3, 0, 0, "reunion", 500.0, "22/09/21", "med.mak", "reunion")) ;
-		return list;
+		*/return list;
 	}
 
 	public static int deleteDepense(long id) {

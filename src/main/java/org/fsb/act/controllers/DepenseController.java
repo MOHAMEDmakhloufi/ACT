@@ -2,16 +2,21 @@ package org.fsb.act.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import org.fsb.act.App;
 import org.fsb.act.entities.Depense;
 import org.fsb.act.entities.FamilleNecessiteuse;
 import org.fsb.act.entities.Membre;
 import org.fsb.act.entities.PersonneNecessiteuse;
 import org.fsb.act.services.DepenseService;
 import org.fsb.act.services.FamilleNecessiteuseService;
+import org.fsb.act.services.PersonneNecessiteuseService;
 import org.fsb.act.services.ServiceMembre;
 import org.fsb.act.validation.InputValidation;
 
@@ -19,8 +24,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -32,6 +39,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class DepenseController implements Initializable{
 	@FXML
@@ -130,8 +138,8 @@ public class DepenseController implements Initializable{
 					handleRadioFamille(null);
 					
 				}else if(depenseSelected.getPersonneNecessiteuse() !=0) {
-					//PersonneNecessiteuse pn= PersonneNecessiteuseService.getOneById(depenseSelected.getPersonneNecessiteuse());
-					PersonneNecessiteuse pn=new PersonneNecessiteuse();
+					PersonneNecessiteuse pn= PersonneNecessiteuseService.getById(depenseSelected.getPersonneNecessiteuse());
+			
 					textFieldPersonne.setText(pn.getPrenom() +" "+pn.getNom());
 					map.put("Personne", depenseSelected.getPersonneNecessiteuse());
 					handleRadioPersonne(null);
@@ -334,12 +342,45 @@ public class DepenseController implements Initializable{
     	}
     }
     @FXML
-    void openTableViewPN(MouseEvent event) {
+    void openTableViewPN(ActionEvent event) {
+    	
+		try {
+			Stage stageSelectionnerPersonne;
+	    	SelectionnerPersonneController selectionnerPersonneController;
+			FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("SelectionnerMembre" + ".fxml"));
+			Scene scene;
+			scene = new Scene(fxmlLoader.load());
+			stageSelectionnerPersonne= new Stage();
+			stageSelectionnerPersonne.setScene(scene);
+
+			selectionnerPersonneController=(SelectionnerPersonneController) fxmlLoader.getController();
+			stageSelectionnerPersonne.setOnCloseRequest(e-> selectionnerPersonneController.personneNecessiteuse=null);
+			
+			stageSelectionnerPersonne.showAndWait();
+	    	//get buttion selectionner and gridPane and the textField
+	    	Button bClicked= (Button) event.getSource();
+	    	GridPane gridPane= (GridPane) bClicked.getParent().getParent();
+	    	TextField textField = (TextField)((AnchorPane)(gridPane.getChildren().get(0))).getChildren().get(0);
+	    	//get personne selectionner
+	    	PersonneNecessiteuse pN= selectionnerPersonneController.personneNecessiteuse;
+	    	
+			if((pN == null && !InputValidation.isFieldNotEmpty(textField)  )||
+					(pN != null && pN.getId()==-1 )) {
+				textField.setText(null);
+				map.put("Personne", (long) -1);
+			}else if(pN != null) {
+				textField.setText(pN.getPrenom() +" "+pN.getNom());
+				map.put("Personne", pN.getId());
+			}
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
     }
 
     @FXML
-    void openTableViewFN(MouseEvent event) {
+    void openTableViewFN(ActionEvent event) {
 
     }
     /**

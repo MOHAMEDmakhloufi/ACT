@@ -162,4 +162,7 @@ public class ServiceMembre {
 		
 		return DaoMembre.modifierMembreFromDb(membre);
 	}
+	public static Membre getOneById(long id) {
+		return DaoMembre.getOneById(id);
+	}
 }

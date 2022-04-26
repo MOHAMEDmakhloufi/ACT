@@ -15,7 +15,6 @@ public class Depense {
 	}
 
 	
-	
 	public Depense(long id, long famille, long personneNecessiteuse, String description, double montant,
 			String derniereMiseJour, String dirigeant, String destination) {
 		this.id = id;

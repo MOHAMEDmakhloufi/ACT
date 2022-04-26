@@ -22,7 +22,7 @@ public class App extends Application {
     public static String dirigeant="med.mak";
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("dons"));
+        scene = new Scene(loadFXML("cotisationMembre"));
         stage.setScene(scene);
         stage.show();
         //stage.setResizable(false);

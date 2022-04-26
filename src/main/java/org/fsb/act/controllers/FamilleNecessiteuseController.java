@@ -80,7 +80,7 @@ public class FamilleNecessiteuseController implements Initializable {
 	private Map<GridPane, Long> map= new HashMap<>();
 	private Stage stageSelectionnerPersonne;
 	private SelectionnerPersonneController selectionnerPersonneController;
-	private ObservableList<FamilleNecessiteuse>  data;
+	private ObservableList<FamilleNecessiteuse>  data=FXCollections.observableArrayList(FamilleNecessiteuseService.getAll());
 	private FamilleNecessiteuse familleNecessiteuse;
 	
 	@Override
@@ -91,9 +91,9 @@ public class FamilleNecessiteuseController implements Initializable {
 			Scene scene= new Scene(fxmlLoader.load());
 			stageSelectionnerPersonne= new Stage();
 			stageSelectionnerPersonne.setScene(scene);
-			
+
 			selectionnerPersonneController=(SelectionnerPersonneController) fxmlLoader.getController();
-			
+			stageSelectionnerPersonne.setOnCloseRequest(e-> selectionnerPersonneController.personneNecessiteuse=null);
 			
 		} catch (IOException e) {
 			
@@ -110,7 +110,9 @@ public class FamilleNecessiteuseController implements Initializable {
      * this function calls serviceMembre to receive all members
      */
 	private void getAll() {
-		data=FXCollections.observableArrayList(FamilleNecessiteuseService.getAll());
+		
+		data.clear();
+		data.addAll(FamilleNecessiteuseService.getAll());
 		tableView.setItems(data);
 	}
 	/**
@@ -226,6 +228,7 @@ public class FamilleNecessiteuseController implements Initializable {
 				if(i==1) {
 					InputValidation.showAlertInfoWithoutHeaderText("Record updated successfully!");
 					clear(null);
+					
 					getAll();
 				}else
 					InputValidation.showAlertErrorWithoutHeaderText("Record Update Failure!");
@@ -250,7 +253,7 @@ public class FamilleNecessiteuseController implements Initializable {
     	if(InputValidation.isFieldNotEmpty(textFieldFils1)) {
     		
     		long fils1= map.get(vBox.getChildren().get(5));
-    		System.out.println("hello "+fils1);
+    		
     		fn.getListFils().add(new PersonneNecessiteuse(fils1));
     	}
     	// other fils
