@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fsb.act.controllers.DonController">
+   <content>
+      <AnchorPane prefHeight="1109.0" prefWidth="1454.0" stylesheets="@css/Don.css">
+         <children>
+            <GridPane fx:id="gridPane" layoutX="-22.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1142.0" prefWidth="1343.0">
+               <children>
+                  <TableView fx:id="tableDon" onMouseClicked="#displayEvenement" prefHeight="451.0" prefWidth="589.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                     <columns>
+                        <TableColumn fx:id="colDonneur" prefWidth="85.0" text="Donneur">
+                           <columns>
+                              <TableColumn fx:id="colNom" minWidth="0.0" prefWidth="126.0" text="Nom" />
+                              <TableColumn fx:id="colPrenom" prefWidth="75.0" text="Prenom" />
+                              <TableColumn fx:id="colNum" prefWidth="75.0" text="N°" />
+                              <TableColumn fx:id="colNationalite" prefWidth="75.0" text="Nationalité" />
+                           </columns>
+                        </TableColumn>
+                        <TableColumn fx:id="colTypeDon" prefWidth="115.0" text="Type de Don" />
+                        <TableColumn fx:id="colObjet" prefWidth="74.0" text="Objet" />
+                        <TableColumn fx:id="colDerniereMiseAJour" prefWidth="95.0" text="Dérniere mise à jour" />
+                        <TableColumn fx:id="colDirigeant" prefWidth="75.0" text="Dirigeant" />
+                     </columns>
+                     <GridPane.margin>
+                        <Insets left="20.0" right="50.0" top="10.0" />
+                     </GridPane.margin>
+                  </TableView>
+                  <VBox prefHeight="607.0" prefWidth="327.0" GridPane.rowIndex="1">
+                     <children>
+                        <Label fx:id="labelPrenom" layoutX="19.0" layoutY="10.0" text="Prenom du donneur" />
+                        <TextField fx:id="TextFieldPrenom" layoutX="28.0" layoutY="40.0" prefHeight="38.0" prefWidth="227.0" promptText="Prenom">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label fx:id="labelNom" layoutX="20.0" layoutY="78.0" text="Nom du donneur" />
+                        <TextField fx:id="textFieldNom" layoutX="28.0" layoutY="113.0" prefHeight="33.0" prefWidth="227.0" promptText="Nom">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label fx:id="labelPieceIdentite" layoutX="17.0" layoutY="156.0" text="Piece d'identite N°" />
+                        <TextField fx:id="textFieldPieceIdentite" prefHeight="33.0" prefWidth="227.0" promptText="Piéce d'identité" />
+                        <Label fx:id="labelNationalite" layoutX="17.0" layoutY="228.0" stylesheets="@css/evenement.css" text="Nationalité" />
+                        <ComboBox fx:id="comboBoxNationalite" prefWidth="150.0" />
+                        <Label fx:id="labelTypeDon" layoutX="20.0" layoutY="307.0" text="Type de Don " />
+                        <ComboBox fx:id="comboBoxtypeDon" prefWidth="150.0" />
+                        <Label fx:id="labelMontant" text="Montant" />
+                        <TextField fx:id="textFieldMonatant" prefHeight="33.0" prefWidth="227.0" promptText="Monatant" />
+                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="90.0" prefWidth="289.0">
+                           <children>
+                              <GridPane hgap="5.0" layoutX="7.0" layoutY="23.0" prefHeight="30.0" prefWidth="306.0">
+                                 <children>
+                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#resetEvent" text="Reset" />
+                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#printRecu" prefHeight="33.0" prefWidth="188.0" text="Print Reçu" GridPane.columnIndex="1" />
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="134.0" minWidth="10.0" prefWidth="134.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.0" minWidth="10.0" prefWidth="161.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                              <GridPane hgap="5.0" layoutX="5.0" layoutY="60.0" vgap="15.0">
+                                 <children>
+                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteEvent" text="Delete" />
+                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateEvent" text="Update" GridPane.columnIndex="1" />
+                                    <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addEvent" text="Add" GridPane.columnIndex="2" />
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </VBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                     <children>
+                        <AnchorPane prefHeight="72.0" prefWidth="601.0">
+                           <children>
+                              <TextField fx:id="textFieldSearch" layoutY="21.0" maxHeight="30.0" onKeyTyped="#searchEvent" prefWidth="250.0" promptText="Search ..." style="-fx-min-height: 30 !important;" AnchorPane.bottomAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" percentWidth="30.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="795.0" minWidth="0.0" percentWidth="70.0" prefWidth="589.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="191.0" minHeight="5.0" prefHeight="47.0" />
+                  <RowConstraints maxHeight="632.0" minHeight="10.0" prefHeight="610.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
