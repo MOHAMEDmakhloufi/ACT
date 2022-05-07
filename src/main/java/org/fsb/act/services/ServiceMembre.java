@@ -73,7 +73,7 @@ public class ServiceMembre {
         	System.out.println(membre);
         	
         	long i=DaoMembre.addMembreInDb(membre);
-        	if(i!=1)
+        	if(i==0)
         		nbErreur++;
         }
 		return nbErreur;
@@ -93,7 +93,7 @@ public class ServiceMembre {
             CSVWriter csvWriter = new CSVWriter(writer);
             // adding header to csv
             String[] header = { "prenom", "nom", "date de naissance","profession", "adresse email",
-        			"numero telephone", "type piece identite", "numero piece identite", "dirigeant"};
+        			"numero telephone", "numero piece identite", "type piece identite", "dirigeant"};
             csvWriter.writeNext(header);
             
             // Create Mapping Strategy to arrange the 

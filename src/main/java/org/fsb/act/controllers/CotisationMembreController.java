@@ -12,13 +12,17 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import org.fsb.act.App;
+import org.fsb.act.entities.Association;
 import org.fsb.act.entities.CotisationMembre;
+import org.fsb.act.entities.Evenement;
 import org.fsb.act.entities.FamilleNecessiteuse;
 import org.fsb.act.entities.Membre;
 import org.fsb.act.entities.PersonneNecessiteuse;
 import org.fsb.act.models.Vide;
-import org.fsb.act.services.CotistationMembreService;
+import org.fsb.act.services.CotisationMembreService;
+import org.fsb.act.services.EvenementService;
 import org.fsb.act.services.FamilleNecessiteuseService;
+import org.fsb.act.services.ModifierAssociationService;
 import org.fsb.act.services.PersonneNecessiteuseService;
 import org.fsb.act.validation.InputValidation;
 
@@ -29,6 +33,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -63,10 +69,19 @@ public class CotisationMembreController implements Initializable{
     private TableColumn<?, ?> colDerniereMiseJour;
     
     @FXML
+	private TextField textFieldSearch;
+    
+    @FXML
 	private TextField textFieldMontant;
     
 	@FXML
 	private TextField textFieldMembre;
+	
+	@FXML
+	private Label labelMontant;
+	
+	@FXML
+	private Label labelMembre;
 	 
 	 private ObservableList<CotisationMembre>  data;
 	 //map pour stocker id membre selectiionner
@@ -80,10 +95,11 @@ public class CotisationMembreController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		//Start get data association and add in map parametres for print recu
 		//exemple data association
-		parametres.put("titre", "ACT");
-		parametres.put("email","act.act@gmail.com" );
-		parametres.put("telephone", "+21533665588");
-		parametres.put("siege", "bizerte");
+		Association association= ModifierAssociationService.getDataAssociation();
+		parametres.put("titre", association.getTitre());
+		parametres.put("email", association.getEmail() );
+		parametres.put("telephone", association.getTelephone());
+		parametres.put("siege", association.getSiege());
 		//fin exemple
 		parametres.put("nomDirigeant", App.dirigeant);
 		File logo= new File(".//src//main//resources//org//fsb//act//images//logo.jpg");
@@ -108,7 +124,7 @@ public class CotisationMembreController implements Initializable{
 				cotisationSelected= tableView.getItems().get(index);
 				
 				if(cotisationSelected.getMembre() != 0) {
-					textFieldMembre.setText(cotisationSelected.getPrenom()+" "+cotisationSelected.getNom());
+					textFieldMembre.setText(cotisationSelected.getPrenom()+"."+cotisationSelected.getNom());
 					map.put("Membre", cotisationSelected.getMembre());
 				}
 				textFieldMontant.setText(""+cotisationSelected.getMontant());
@@ -118,7 +134,11 @@ public class CotisationMembreController implements Initializable{
 	}
 	@FXML
     void clear(ActionEvent event) {
-
+		initialColorLabel();
+		textFieldMembre.clear();
+		map.put("Membre", (long) -1);
+		textFieldMontant.clear();
+		cotisationSelected=null;
     }
 	@FXML
     void handlePrintRecu(ActionEvent event) {
@@ -132,14 +152,97 @@ public class CotisationMembreController implements Initializable{
 
     @FXML
     void ajouterCotisation(ActionEvent event) {
-    	 //exemple
-		 parametres.put("prenom", "ahmed");
-		 parametres.put("nom", "saoudi");
-		 parametres.put("montant", 20+"DT"); 
+    	if(validationChamps()) {
+			 
+			CotisationMembre cotisationMembre= createCotisationFromIHM();
+			
+			//call service
+			int i=CotisationMembreService.ajouterCotMembre(cotisationMembre);
+			if(i!=0) {
+				InputValidation.showAlertInfoWithoutHeaderText("Addition has been registered Successfully!");
+				
+				clear(null);
+				getAll();
+				parametres.put("prenom", cotisationMembre.getPrenom());
+				parametres.put("nom", cotisationMembre.getNom());
+				parametres.put("montant", cotisationMembre.getMontant()+"DT"); 
+				printRecu("recuCotisation", parametres);
+			}
+			else
+				InputValidation.showAlertErrorWithoutHeaderText("Registration Failed!");
+		}
 		 
-		 printRecu("recuCotisation", parametres);
+		 
+    }
+    @FXML
+    void updateCotisation(ActionEvent event) {
+    	if(cotisationSelected != null && validationChamps()) {
+    		
+    		CotisationMembre cotisationMembre= createCotisationFromIHM();
+			cotisationMembre.setId(cotisationSelected.getId());
+			int i=CotisationMembreService.modifierCotisationMembre(cotisationMembre);
+			if(i==1) {
+				InputValidation.showAlertInfoWithoutHeaderText("Record updated successfully!");
+				clear(null);
+				getAll();
+				parametres.put("prenom", cotisationMembre.getPrenom());
+				parametres.put("nom", cotisationMembre.getNom());
+				parametres.put("montant", cotisationMembre.getMontant()+"DT"); 
+				printRecu("recuCotisation", parametres);
+			}else
+				InputValidation.showAlertErrorWithoutHeaderText("Record Update Failure!");
+				
+		
+	}
+		 
+		 
+    }
+    @FXML
+    void deleteCotisation(ActionEvent event) {
+    	if(cotisationSelected !=null) {
+    		if(InputValidation.showConfirmation("Are you sure to Delete this event?")
+    				.get()== ButtonType.OK) {
+    			int i= CotisationMembreService.supprimerCotisation(cotisationSelected.getId());
+    			
+    	    	if(i==1) {
+	    			InputValidation.showAlertInfoWithoutHeaderText("Delete Successfully!");
+	    			data.remove(cotisationSelected);
+	    			clear(null);
+    	    	}else
+        			InputValidation.showAlertErrorWithoutHeaderText("Delete Failure :(");
+    		}
+    	}else 
+    		InputValidation.showAlertErrorWithoutHeaderText("IMPOSSIBLE");
     }
     
+    @FXML
+    void search() {
+    	String text= textFieldSearch.getText();
+        
+    	if(!InputValidation.isFieldNotEmpty(textFieldSearch)) {
+    		
+    		tableView.setItems(data);
+    	}else {
+
+    		tableView.setItems(CotisationMembreService.searchCotisations(data, text));
+    		
+    	}
+    } 
+    public CotisationMembre createCotisationFromIHM() {
+    	CotisationMembre cotisationMembre= new CotisationMembre();
+    	cotisationMembre.setMembre(map.get("Membre"));
+    	cotisationMembre.setMontant(Double.parseDouble(textFieldMontant.getText()));
+    	String date= LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    	cotisationMembre.setDerniereMiseJour(date);
+    	cotisationMembre.setDirigeant(App.dirigeant);
+    	
+    	String[] prenomAndNom= textFieldMembre.getText().split("\\.");
+    	
+    	cotisationMembre.setPrenom(prenomAndNom[0]);
+    	cotisationMembre.setNom(prenomAndNom[1]);
+    	return cotisationMembre; 
+    	
+    }
     void printRecu(String fileName, Map<String, Object> parametres) {
 		 
 		
@@ -188,7 +291,7 @@ public class CotisationMembreController implements Initializable{
 				textFieldMembre.clear();
 				map.put("Membre", (long) -1);
 			}else if(membre != null) {
-				textFieldMembre.setText(membre.getPrenom() +" "+membre.getNom());
+				textFieldMembre.setText(membre.getPrenom() +"."+membre.getNom());
 				map.put("Membre", membre.getId());
 			}
 		} catch (IOException e1) {
@@ -200,7 +303,7 @@ public class CotisationMembreController implements Initializable{
      * this function calls serviceCotisation to receive all cotisationss
      */
 	private void getAll() {
-		data=FXCollections.observableArrayList(CotistationMembreService.getAll());
+		data=FXCollections.observableArrayList(CotisationMembreService.getAll());
 		tableView.setItems(data);
 	}
     private void setCellTable() {
@@ -210,6 +313,40 @@ public class CotisationMembreController implements Initializable{
     	colMontant.setCellValueFactory(new PropertyValueFactory<>("montant"));
     	colDirigeant.setCellValueFactory(new PropertyValueFactory<>("dirigeant"));
     }
+    
+    /**
+     * test the textFields One by one
+     * call initialColorLabel()
+     * @return
+     */
+    public boolean validationChamps() {
+    	boolean test = true;
+    	
+    	initialColorLabel();
+    	
+    	if(!InputValidation.isFieldNotEmpty(textFieldMontant) ) {
+    		labelMontant.setStyle("-fx-text-fill:red");
+    		test=false;
+    	}
+    	if(!InputValidation.isFieldNotEmpty(textFieldMembre)) {
+    		labelMembre.setStyle("-fx-text-fill:red");
+    		test=false;
+    	}
+    	
+    	
+    	return test;
+    }
+    /**
+     * initial the color label 
+     */
+    public void initialColorLabel() {
+    	labelMembre.setStyle("-fx-text-fill:#3F2B63");
+    	labelMontant.setStyle("-fx-text-fill:#3F2B63");
+    	
+    	
+    	
+    }
+    
 }
 
 

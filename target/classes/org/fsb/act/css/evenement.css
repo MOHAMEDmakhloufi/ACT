@@ -1,0 +1,46 @@
+.label {
+	-fx-text-fill: #430064;
+	-fx-font-size: 16px;
+	-fx-padding: 10px 0 5 0px;
+}
+.text-field {
+	-fx-background-color: transparent;
+	-fx-border-color: #430064;
+	-fx-border-radius: 5;
+	-fx-text-fill: #3F2B63;
+	-fx-min-height: 40px;
+}
+.date-picker .text-field{
+	-fx-border-width:0;
+	-fx-text-fill:#430064;
+	
+}
+.date-picker .arrow-button{
+	-fx-background-color: #7300AB;
+}
+.date-picker .arrow-button .arrow{
+	-fx-background-color: white;
+}
+.button {
+	-fx-background-color: #7300AB;
+	-fx-border-color: #3F2B63;
+	-fx-border-radius: 5;
+	-fx-text-fill: #FFFFFF;
+	-fx-cursor: hand;
+}
+.table-view{
+-fx-border-color: #D37AFF;}
+
+
+
+.table-view .column-header{
+    -fx-background-color:#D37AFF;
+    
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color:#D37AFF ;
+    -fx-text-fill: white;
+    -fx-padding: 0 0 5px 0;
+    
+    }

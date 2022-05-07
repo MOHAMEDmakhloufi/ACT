@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" styleClass="imageAnchor" stylesheets="@css/Alert.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fsb.act.controllers.AlertFinanceController">
+   <children>
+      <Label layoutX="75.0" layoutY="35.0" prefHeight="25.0" text="Acces Finance" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="accesFinance" minHeight="30.0" minWidth="230.0" onAction="#permission" style=": ;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="80.0" />
+      <Button layoutX="280.0" layoutY="153.0" mnemonicParsing="false" onAction="#permission" prefHeight="30.0" prefWidth="90.0" text="OK">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

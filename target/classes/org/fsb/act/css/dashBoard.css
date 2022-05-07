@@ -1,0 +1,31 @@
+.label-normal {
+	-fx-text-fill: #8600C8;
+	-fx-font-size: 14px;
+	-fx-padding: 10px 0 5 0px;
+}
+.top-label{
+	-fx-font-size: 16px;
+	-fx-text-fill: #430064;
+	-fx-padding: 10px 0 5 0px;
+}
+.vBox-label .label{
+	-fx-background-color: C653FF;
+	-fx-text-fill: white;
+	-fx-pref-width:200px;
+	-fx-padding: 3px 3 3 10px;
+	-fx-background-radius: 5;
+	-fx-font-size: 14px;
+}
+.text-field {
+	-fx-background-color: transparent;
+	-fx-border-color: #430064;
+	-fx-border-radius: 5;
+	-fx-text-fill: #3F2B63;
+	
+}
+.imageAnchor{
+
+	-fx-background-image: url("../images/statistic.jpg");
+	-fx-background-size: 100% 100%; 
+	
+}

@@ -1,0 +1,32 @@
+.button {
+	-fx-background-color: #3F2B63;
+	-fx-border-color: #3F2B63;
+	-fx-border-radius: 5;
+	-fx-text-fill: #FFFFFF;
+	-fx-min-height: 35;
+}
+.label {
+	-fx-text-fill: #3F2B63;
+	-fx-font-size: 15px;
+	-fx-padding: 10px 0 0 0px;
+}
+
+.imageAnchor{
+
+	-fx-background-image: url("mere.jpg");
+	-fx-background-size: 100% 100%; 
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+	
+}
+
+.text-field, .password-field{
+	-fx-min-height: 35;
+	-fx-max-width: 270;
+	
+}
+.text-field:focused, .password-field:focused{
+	
+	-fx-faint-focus-color: transparent; 
+     	-fx-focus-color: rgba(115, 0, 171,0.8); 
+
+}

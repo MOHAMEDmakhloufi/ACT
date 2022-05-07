@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="819.0" stylesheets="@css/monCompte.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fsb.act.controllers.MonCompteController">
+   <content>
+      <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="60.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="labelUsername" text="Username" />
+                  <TextField fx:id="textFieldUsername" disable="true" promptText="xxx.XXX">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label fx:id="labelActuelPassword" layoutX="60.0" layoutY="60.0" text="Actuel Password" />
+                  <PasswordField fx:id="passwordFieldActuel" promptText="***********************">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <Label fx:id="labelNouveau" layoutX="60.0" layoutY="139.0" text="Nouveau" />
+                  <PasswordField fx:id="passwordFieldNouveau" layoutX="60.0" layoutY="168.0" promptText="***********************">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <Label fx:id="labelConfirmer" layoutX="60.0" layoutY="218.0" text="Confirmer" />
+                  <PasswordField fx:id="passwordFieldConfirmer" layoutX="60.0" layoutY="247.0" promptText="***********************" />
+                  <Button maxWidth="270.0" mnemonicParsing="false" onAction="#enregistrerLesModification" prefWidth="270.0" text="Enregistrer les modifications">
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="50.0" right="30.0" top="50.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </VBox>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="imageAnchor" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+   </content>
+</ScrollPane>

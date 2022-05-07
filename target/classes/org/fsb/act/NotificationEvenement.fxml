@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="819.0" stylesheets="@css/notificationEvent.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fsb.act.controllers.NotificationEventController">
+   <content>
+      <VBox fx:id="vBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0">
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </padding>
+         <children>
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" styleClass="anchor-pane">
+               <children>
+                  <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="446.0" minWidth="10.0" percentWidth="62.0" prefWidth="412.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" percentWidth="38.0" prefWidth="258.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label prefHeight="29.0" prefWidth="358.0" text="DEMANDE D'APPROBTION D'UN MONTANT :" />
+                        <Label styleClass="sousLabel" text="dirigeant qui demande :" GridPane.rowIndex="1" />
+                        <Label layoutX="10.0" layoutY="63.0" styleClass="sousLabel" text="Budget en DT  :" GridPane.rowIndex="2" />
+                        <Label layoutX="10.0" layoutY="108.0" prefHeight="29.0" prefWidth="107.0" styleClass="sousLabel" text="Raison :" GridPane.rowIndex="3" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <children>
+                              <Button layoutX="35.0" layoutY="2.0" mnemonicParsing="false" styleClass="refuser" text="REFUSER" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0" />
+                              <Button layoutX="157.0" layoutY="10.0" mnemonicParsing="false" styleClass="accepter" text="ACCEPTER" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="5.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>
