@@ -89,12 +89,12 @@ public class MainController implements Initializable{
 	 */
 	private void iconClose(Tab tab) {
 		AnchorPane a = new AnchorPane();
-		a.setPrefWidth(12);
-		a.setPrefHeight(12);
+		a.setPrefWidth(13);
+		a.setPrefHeight(13);
 		
 		ImageView imageView= new ImageView();
-		imageView.setFitWidth(12);
-		imageView.setFitHeight(12);
+		imageView.setFitWidth(13);
+		imageView.setFitHeight(13);
 		
 		imageView.setOnMouseClicked(event ->{
 			
@@ -169,43 +169,52 @@ public class MainController implements Initializable{
 	 */
 	@FXML
     void handleListMembres(MouseEvent event) {
-		List<TabModel> list = new ArrayList<>();
-		list.add(new TabModel("gestion membres", "membres", "gestionMembres"));
-		selectSubList(listViewMembres, list);
+		if(event.getClickCount() >1) {
+			List<TabModel> list = new ArrayList<>();
+			list.add(new TabModel("gestion membres", "membres", "gestionMembres"));
+			selectSubList(listViewMembres, list);
+		}
     }
 	
 	@FXML
     void handleListNecessiteux(MouseEvent event) {
-		List<TabModel> list = new ArrayList<>();
-		list.add(new TabModel("gestion personnes necessiteuse", "personnes", "personneNecessiteuse"));
-		list.add(new TabModel("gestion familles necessiteuse", "familles", "familleNecessiteuse"));
-		selectSubList(listViewNecessiteux, list);
+		if(event.getClickCount() >1) {
+			List<TabModel> list = new ArrayList<>();
+			list.add(new TabModel("gestion personnes necessiteuse", "personnes", "personneNecessiteuse"));
+			list.add(new TabModel("gestion familles necessiteuse", "familles", "FamillesNecessiteuse"));
+			selectSubList(listViewNecessiteux, list);
+		}
     }
 
     @FXML
     void handleListEvenements(MouseEvent event) {
-    	List<TabModel> list = new ArrayList<>();
-		list.add(new TabModel("gestion evenments", "evenements", "evenements"));
-		list.add(new TabModel("notification", "notificationV", "notificationValidation"));
-		selectSubList(listViewEvenements, list);
+    	if(event.getClickCount() >1) {
+	    	List<TabModel> list = new ArrayList<>();
+			list.add(new TabModel("gestion evenments", "evenements", "evenements"));
+			list.add(new TabModel("notification", "notificationV", "notificationValidation"));
+			selectSubList(listViewEvenements, list);
+    	}
     }
 
     @FXML
     void handleListDashBoard(MouseEvent event) {
-    	List<TabModel> list = new ArrayList<>();
-		list.add(new TabModel("dashBoard", "dashBoard", "dashBoard"));
-		selectSubList(listViewDashBoard, list);
+    	if(event.getClickCount() >1) {
+	    	List<TabModel> list = new ArrayList<>();
+			list.add(new TabModel("dashBoard", "dashBoard", "dashBoard"));
+			selectSubList(listViewDashBoard, list);
+    	}
     }
 
     @FXML
     void handleListFinances(MouseEvent event) {
-    	
-    	List<TabModel> list = new ArrayList<>();
-		list.add(new TabModel("cotisation des membres", "cotisation", "cotisationDesMembres"));
-		list.add(new TabModel("dons", "dons", "Dons"));
-		list.add(new TabModel("depenses", "depenses", "depenses"));
-		list.add(new TabModel("notification", "notificationE", "notificationEvenement"));
-		selectSubList(listViewFinances, list);
+    	if(event.getClickCount() >1) {
+	    	List<TabModel> list = new ArrayList<>();
+			list.add(new TabModel("cotisation des membres", "cotisation", "cotisationMembre"));
+			list.add(new TabModel("dons", "dons", "Dons"));
+			list.add(new TabModel("depenses", "depenses", "depense"));
+			list.add(new TabModel("notification", "notificationE", "notificationEvenement"));
+			selectSubList(listViewFinances, list);
+    	}
     }
     @FXML
     void testPermission(MouseEvent event){
@@ -233,10 +242,12 @@ public class MainController implements Initializable{
     }
     @FXML
     void handleListMonCompte(MouseEvent event) {
-    	List<TabModel> list = new ArrayList<>();
-		list.add(new TabModel("parametre de compte", "monCompte", "monCompte"));
-		
-		selectSubList(listViewMonCompte, list);
+    	if(event.getClickCount() >1) {
+	    	List<TabModel> list = new ArrayList<>();
+			list.add(new TabModel("parametre de compte", "monCompte", "monCompte"));
+			
+			selectSubList(listViewMonCompte, list);
+    	}
     }
     public void DisplayLogoAndTitre() {
     	SideBarAssociationService.getLogoTitre(imageLogo, labelLitre);

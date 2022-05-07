@@ -1,2 +1,2 @@
-med	
-mak
+med.mak	
+med

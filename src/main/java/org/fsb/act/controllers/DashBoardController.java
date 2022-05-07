@@ -84,8 +84,14 @@ public class DashBoardController implements Initializable{
     	vBoxLeft.getChildren().add(areaChart);
     	vBoxLeft.getChildren().add(pieChart);
     	barChar1();
-    	vBoxRight.getChildren().add(barChart);
+    	vBoxRight.getChildren().add(0, barChart);
 	}
+    @FXML
+    void refresh() {
+    	getArgentTresor();
+    	revenueAndDepenseInitial();
+    	barChar1();
+    }
     /**
      * the method get the last argent du tresor from data base
      */
@@ -123,7 +129,7 @@ public class DashBoardController implements Initializable{
     }
     @FXML
     void changeDateJour() {
-    	if(textFieldJour.getText().matches("^(3[0-1])|([0-2][0-9])$")|| textFieldMois.getText().isEmpty()) {
+    	if(textFieldJour.getText().matches("^(3[0-1])|([0-2][0-9])$")|| textFieldJour.getText().isEmpty()) {
     		changeDate();
     	}
 
@@ -133,6 +139,7 @@ public class DashBoardController implements Initializable{
      */
     @FXML
     void changeDate() {
+    
     	String annee= textFieldAnne.getText();
     	String mois= textFieldMois.getText();
     	String jour= textFieldJour.getText();

@@ -22,10 +22,11 @@ public class App extends Application {
     public static String dirigeant="med.mak";
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("cotisationMembre"));
+        scene = new Scene(loadFXML("login"));
         stage.setScene(scene);
         stage.show();
-        //stage.setResizable(false);
+        stage.setResizable(false);
+        
         stage.setOnCloseRequest(e -> {if(ConnxDB.dcr!= null)
 			try {
 				ConnxDB.oracleConnecxion.unregisterDatabaseChangeNotification(ConnxDB.dcr);

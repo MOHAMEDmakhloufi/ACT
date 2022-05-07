@@ -186,7 +186,13 @@ public class ControllerMembre implements Initializable{
 		);
 		
 	}
-    
+	@FXML
+    void refresh() {
+		//etape1
+		clear();
+    	//etape2
+    	getAll();
+    }
     /**
      * If you click btn upload image, 
      * we open the browser to upload the image member
@@ -352,7 +358,7 @@ public class ControllerMembre implements Initializable{
     }
     public Membre createMembreFromIHM() throws IOException {
     	Membre membre= new Membre();
-    	FileInputStream fis= new FileInputStream(image.getImage().getUrl().split(":")[1]);
+    	FileInputStream fis= new FileInputStream(image.getImage().getUrl().toString().substring(5));
 		membre.setImage(fis.readAllBytes());
 		
 		if(copiePiece !=null) {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -37,6 +38,11 @@
                      </columns>
                   </TableView>
                   <TextField layoutX="313.0" layoutY="48.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" promptText="Search ..." AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <ImageView fitHeight="20.0" fitWidth="20.0" onMouseClicked="#refresh" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@images/refresh.jpg" />
+                     </image>
+                  </ImageView>
                </children>
                <GridPane.margin>
                   <Insets />

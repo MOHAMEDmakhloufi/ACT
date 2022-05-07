@@ -115,6 +115,12 @@ public class FamilleNecessiteuseController implements Initializable {
 		data.addAll(FamilleNecessiteuseService.getAll());
 		tableView.setItems(data);
 	}
+	@FXML
+    void refresh() {
+		
+    	//etape2
+    	getAll();
+    }
 	/**
 	 * 
 	 * if select row then display this famille
@@ -172,7 +178,7 @@ public class FamilleNecessiteuseController implements Initializable {
 			long i=FamilleNecessiteuseService.ajouterFamille(fn);
 			if(i!=0) {
 				InputValidation.showAlertInfoWithoutHeaderText("Addition has been registered Successfully!");
-				
+				familleNecessiteuse=fn;
 				clear(null);
 				getAll();
 			}
@@ -242,7 +248,7 @@ public class FamilleNecessiteuseController implements Initializable {
      */
     public FamilleNecessiteuse createFamilleFromIHM(){
     	FamilleNecessiteuse fn= new FamilleNecessiteuse();
-    	fn.setId(familleNecessiteuse.getId());
+    	
     	//pere
     	long pereId= map.get(vBox.getChildren().get(1));
     	fn.setPere(new PersonneNecessiteuse(pereId));
@@ -273,6 +279,7 @@ public class FamilleNecessiteuseController implements Initializable {
     	if(familleNecessiteuse != null) {
     		if(InputValidation.showConfirmation("Are you sure to Delete this Famille ?")
     				.get()== ButtonType.OK) {
+    			System.out.println(familleNecessiteuse.getId());
     			int i= FamilleNecessiteuseService.supprimerFamille(familleNecessiteuse.getId());
     			
     	    	if(i==1) {
@@ -358,6 +365,7 @@ public class FamilleNecessiteuseController implements Initializable {
     void openTableViewPN(ActionEvent event) {
     	
     	stageSelectionnerPersonne.showAndWait();
+    	stageSelectionnerPersonne.setResizable(false);
     	//get buttion selectionner and gridPane and the textField
     	Button bClicked= (Button) event.getSource();
     	GridPane gridPane= (GridPane) bClicked.getParent().getParent();

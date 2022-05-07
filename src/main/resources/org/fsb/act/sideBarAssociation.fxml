@@ -14,7 +14,7 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ImageView fx:id="imageLogo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageLogo" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#refresh" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="30.0" top="30.0" />
                      </HBox.margin>

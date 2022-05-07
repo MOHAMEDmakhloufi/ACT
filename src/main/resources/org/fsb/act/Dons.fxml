@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="819.0" stylesheets="@css/don.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fsb.act.controllers.DonController">
    <content>
-      <GridPane minHeight="-Infinity" minWidth="-Infinity">
+      <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="35.0" prefWidth="309.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="-Infinity" percentWidth="65.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="100.0" spacing="20.0">
                <children>
                   <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
                      <children>
@@ -60,16 +60,16 @@
                   </VBox>
                   <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
                      <children>
-                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox fx:id="vBoxArgent" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Label fx:id="labelMontant" text="Montant" />
                               <TextField fx:id="textFieldMontant" promptText="montant DT" />
                            </children>
                         </VBox>
-                        <VBox layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox fx:id="vBoxMateriel" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Label fx:id="labelObjetMateriel" text="Objet Materiel" />
-                              <TextField fx:id="textFieldObjet" promptText="montant DT" text="Objet Materiel" />
+                              <TextField fx:id="textFieldObjet" promptText="Objet Materiel" />
                            </children>
                         </VBox>
                      </children>
@@ -85,7 +85,7 @@
                      <children>
                         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1">
                            <children>
-                              <Button layoutX="45.0" layoutY="-3.0" mnemonicParsing="false" onAction="#printReçu" text="Print Reçu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Button layoutX="45.0" layoutY="-3.0" mnemonicParsing="false" onAction="#handlePrintRecu" text="Print Reçu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
@@ -132,21 +132,31 @@
                   <Insets left="20.0" right="20.0" top="50.0" />
                </padding>
                <children>
-                  <TextField maxWidth="250.0" onKeyTyped="#search" promptText="search..." />
+                  <AnchorPane>
+                     <children>
+                        <TextField fx:id="textFieldSearch" maxWidth="250.0" minWidth="200.0" onKeyTyped="#search" promptText="search..." />
+                        <ImageView fitHeight="20.0" fitWidth="20.0" onMouseClicked="#refresh" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0">
+                           <image>
+                              <Image url="@images/refresh.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                   <TableView fx:id="tableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#displayDon">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Donneur">
+                      <TableColumn fx:id="colDonneur" prefWidth="75.0" text="Donneur">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="Prenom" />
-                              <TableColumn prefWidth="75.0" text="Nom" />
-                              <TableColumn prefWidth="75.0" text="N° Piece" />
-                              <TableColumn prefWidth="75.0" text="Nationalité" />
+                              <TableColumn fx:id="colPrenom" prefWidth="75.0" text="Prenom" />
+                              <TableColumn fx:id="colNom" prefWidth="75.0" text="Nom" />
+                              <TableColumn fx:id="colNpiece" prefWidth="75.0" text="N° Piece" />
+                              <TableColumn fx:id="colNationalite" prefWidth="75.0" text="Nationalité" />
                            </columns>
                         </TableColumn>
-                      <TableColumn prefWidth="75.0" text="Type de don" />
-                        <TableColumn prefWidth="75.0" text="Montant" />
-                        <TableColumn prefWidth="75.0" text="Objet" />
-                        <TableColumn prefWidth="75.0" text="Le Deriére mise à jour" />
+                      <TableColumn fx:id="colTypeDon" prefWidth="75.0" text="Type de don" />
+                        <TableColumn fx:id="colMontant" prefWidth="75.0" text="Montant" />
+                        <TableColumn fx:id="colObjet" prefWidth="75.0" text="Objet" />
+                        <TableColumn fx:id="colDerniereMiseJour" prefWidth="75.0" text="Le Deriére mise à jour" />
+                        <TableColumn fx:id="colDirigeant" prefWidth="75.0" text="Dirigeant" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

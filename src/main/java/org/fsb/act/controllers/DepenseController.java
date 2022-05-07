@@ -114,6 +114,13 @@ public class DepenseController implements Initializable{
 		data=FXCollections.observableArrayList(DepenseService.getAll());
 		tableDepenses.setItems(data);
 	}
+	@FXML
+    void refresh() {
+		//etape1
+		clear(null);
+    	//etape2
+    	getAll();
+    }
 	/**
 	 * 
 	 * if select row then display this depense
@@ -294,7 +301,7 @@ public class DepenseController implements Initializable{
 			 
 			Depense depense= createDepenseFromIhm();
 			//call service
-			long i=DepenseService.ajouterDepense(depense);
+			int i=DepenseService.ajouterDepense(depense);
 			if(i==1) {
 				InputValidation.showAlertInfoWithoutHeaderText("Addition has been registered Successfully!");
 				
@@ -321,6 +328,8 @@ public class DepenseController implements Initializable{
     		depense.setDescription(textFieldDescription.getText());
     	}
     	depense.setMontant(Double.parseDouble(textFieldMontant.getText()));
+    	depense.setDirigeant(App.dirigeant);
+    	
     	return depense;
     }
     /**
@@ -347,7 +356,7 @@ public class DepenseController implements Initializable{
 		try {
 			Stage stageSelectionnerPersonne;
 	    	SelectionnerPersonneController selectionnerPersonneController;
-			FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("SelectionnerMembre" + ".fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("SelectionnerPersonneN" + ".fxml"));
 			Scene scene;
 			scene = new Scene(fxmlLoader.load());
 			stageSelectionnerPersonne= new Stage();
@@ -357,6 +366,7 @@ public class DepenseController implements Initializable{
 			stageSelectionnerPersonne.setOnCloseRequest(e-> selectionnerPersonneController.personneNecessiteuse=null);
 			
 			stageSelectionnerPersonne.showAndWait();
+			stageSelectionnerPersonne.setResizable(false);
 	    	//get buttion selectionner and gridPane and the textField
 	    	Button bClicked= (Button) event.getSource();
 	    	GridPane gridPane= (GridPane) bClicked.getParent().getParent();
@@ -381,7 +391,35 @@ public class DepenseController implements Initializable{
 
     @FXML
     void openTableViewFN(ActionEvent event) {
+    	try {
+			Stage stageSelectionnerFamille;
+	    	SelectionnerFamilleController selectionnerFamilleController;
+			FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("SelectionnerFamille" + ".fxml"));
+			Scene scene;
+			scene = new Scene(fxmlLoader.load());
+			stageSelectionnerFamille= new Stage();
+			stageSelectionnerFamille.setScene(scene);
 
+			selectionnerFamilleController=(SelectionnerFamilleController) fxmlLoader.getController();
+			stageSelectionnerFamille.setOnCloseRequest(e-> selectionnerFamilleController.familleNecessiteuse=null);
+			
+			stageSelectionnerFamille.showAndWait();
+	    	stageSelectionnerFamille.setResizable(false);
+	    	//get famille selectionner
+	    	FamilleNecessiteuse fN= selectionnerFamilleController.familleNecessiteuse;
+	    	
+			if((fN == null && !InputValidation.isFieldNotEmpty(textFieldFamille)  )||
+					(fN != null && fN.getId()==-1 )) {
+				textFieldFamille.setText(null);
+				map.put("Famille", (long) -1);
+			}else if(fN != null) {
+				textFieldFamille.setText(fN.getPere().getPrenom() +" "+fN.getPere().getNom()+" et "+fN.getMere().getPrenom() +" "+fN.getMere().getNom());
+				map.put("Famille", fN.getId());
+			}
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
     }
     /**
      * test the textFields One by one

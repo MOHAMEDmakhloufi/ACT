@@ -23,6 +23,7 @@
 	
 	-fx-border-radius: 5;
 	-fx-text-fill: white;
+	-fx-cursor: hand;
 }
 
 .table-view .column-header{

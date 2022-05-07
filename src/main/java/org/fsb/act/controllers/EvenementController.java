@@ -114,6 +114,14 @@ public class EvenementController implements Initializable {
     	//etape2
     	getAll();
 	}
+	
+	@FXML
+    void refresh() {
+		//etape1
+		resetEvent(null);
+    	//etape2
+    	getAll();
+    }
 	/**
      * correspondence between a table column and a attribute
      */

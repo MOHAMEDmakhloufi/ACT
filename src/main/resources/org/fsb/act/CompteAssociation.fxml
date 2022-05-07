@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
@@ -76,6 +77,15 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                <children>
+                  <AnchorPane>
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" onMouseClicked="#refresh" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0">
+                           <image>
+                              <Image url="@images/refresh.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                   <TextField fx:id="search" minHeight="24.0" onAction="#searchCompte" prefHeight="30.0" prefWidth="214.0" promptText="Search . . ." style="-fx-max-width: 200;">
                      <VBox.margin>
                         <Insets bottom="5.0" left="20.0" />

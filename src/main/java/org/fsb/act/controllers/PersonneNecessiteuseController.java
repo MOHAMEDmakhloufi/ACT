@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -164,7 +165,7 @@ public class PersonneNecessiteuseController implements Initializable {
     @FXML
     private Button download;  
     @FXML
-    private AnchorPane page;
+    private ScrollPane page;
     
     List<PersonneNecessiteuse> personnes;
     private PersonneNecessiteuse selectedPersonne;
@@ -200,6 +201,11 @@ public class PersonneNecessiteuseController implements Initializable {
 				new FileChooser.ExtensionFilter("Csv files", "*csv")
 		);
  	}
+    @FXML
+    void refresh() {
+		
+    	data=loadDataPersonneNecessiteuse();
+    }
     private void setCellTable() {
     	colNom.setCellValueFactory(new PropertyValueFactory<PersonneNecessiteuse,String>("nom"));
     	colPrenom.setCellValueFactory(new PropertyValueFactory<PersonneNecessiteuse,String>("prenom"));

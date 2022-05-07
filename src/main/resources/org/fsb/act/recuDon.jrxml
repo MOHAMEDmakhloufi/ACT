@@ -10,6 +10,8 @@
 	<parameter name="nom" class="java.lang.String"/>
 	<parameter name="date" class="java.lang.String"/>
 	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="montant" class="java.lang.String"/>
+	<parameter name="objetMateriel" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -80,7 +82,7 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="234" splitType="Stretch">
+		<band height="318" splitType="Stretch">
 			<staticText>
 				<reportElement x="30" y="40" width="100" height="40" uuid="f1e6552b-d3d7-4415-979d-452d578c1da1"/>
 				<textElement verticalAlignment="Middle">
@@ -131,11 +133,11 @@
 				<textFieldExpression><![CDATA[$P{nom}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="30" y="192" width="460" height="42" uuid="af40d94d-8270-4ada-91ed-5ac55cc76880"/>
+				<reportElement x="30" y="192" width="240" height="28" uuid="af40d94d-8270-4ada-91ed-5ac55cc76880"/>
 				<textElement verticalAlignment="Middle">
 					<font size="16"/>
 				</textElement>
-				<text><![CDATA[et avoir perçu sa don . Le don du donneur susnommmé est donc vlidée conformément au Décret-loi n°88-2011.]]></text>
+				<text><![CDATA[et avoir perçu sa don ( Montant :  ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="279" y="40" width="252" height="40" uuid="c9fc1f52-0b68-4d46-8419-6f1966a510b7"/>
@@ -143,6 +145,41 @@
 					<font size="16"/>
 				</textElement>
 				<text><![CDATA[, déclare avoir enregistré ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="260" width="485" height="50" uuid="b1c2018a-cb1f-4ca0-b815-e83ebb153122"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Le don du donneur susnommmé est donc vlidée conformément au Décret-loi n°88-2011.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="270" y="191" width="100" height="30" uuid="63b268b4-e123-40b0-9ff3-3168971dfa23"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{montant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="192" y="221" width="110" height="30" uuid="0efe8639-c0ac-47dc-b838-c00187490f6d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[ObjetMateriel: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="302" y="220" width="168" height="30" uuid="73d6dafe-9815-42bf-89ff-410f2bd6c3b9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{objetMateriel}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="470" y="220" width="61" height="30" uuid="74c4e568-768f-45a8-ac97-a509eaedf875"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[).]]></text>
 			</staticText>
 		</band>
 	</detail>

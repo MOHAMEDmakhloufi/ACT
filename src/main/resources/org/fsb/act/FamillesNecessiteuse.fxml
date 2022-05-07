@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.layout.*?>
@@ -158,6 +159,11 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" onMouseClicked="#refresh" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@images/refresh.jpg" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>

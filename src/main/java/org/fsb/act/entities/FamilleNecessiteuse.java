@@ -13,6 +13,10 @@ public class FamilleNecessiteuse {
 	public FamilleNecessiteuse() {
 	}
 
+	public FamilleNecessiteuse(long id) {
+		this.id = id;
+	}
+
 	public FamilleNecessiteuse(long id, PersonneNecessiteuse pere, PersonneNecessiteuse mere,
 			List<PersonneNecessiteuse> listFils, String adresse, int nbFils) {
 		this.id = id;

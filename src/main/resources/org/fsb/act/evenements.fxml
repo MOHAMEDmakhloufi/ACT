@@ -8,18 +8,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fsb.act.controllers.EvenementController">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fsb.act.controllers.EvenementController">
   <content>
     <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@css/evenement.css">
          <children>
-            <GridPane fx:id="gridPane" layoutY="-13.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="940.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <GridPane fx:id="gridPane" layoutY="-13.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="0.0" percentWidth="30.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="795.0" minWidth="0.0" percentWidth="70.0" prefWidth="589.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="72.0" minHeight="5.0" prefHeight="72.0" />
-                  <RowConstraints maxHeight="486.0" minHeight="10.0" prefHeight="456.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="1.7976931348623157E308" minHeight="5.0" prefHeight="72.0" />
+                  <RowConstraints minHeight="10.0" prefHeight="600.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <TableView fx:id="tableEvenement" onMouseClicked="#displayEvenement" prefHeight="451.0" prefWidth="589.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -39,7 +39,7 @@
                         <Insets left="20.0" right="50.0" top="10.0" />
                      </GridPane.margin>
                   </TableView>
-                  <VBox prefHeight="465.0" prefWidth="282.0" GridPane.rowIndex="1">
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="282.0" GridPane.rowIndex="1">
                      <children>
                               <Label fx:id="labelTitre" layoutX="19.0" layoutY="10.0" text="Titre" />
                         
@@ -114,18 +114,19 @@
                         <Insets left="40.0" />
                      </padding>
                   </VBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                  <AnchorPane GridPane.columnIndex="1">
                      <children>
-                        <AnchorPane prefHeight="72.0" prefWidth="601.0">
-                           <children>
-                              <TextField fx:id="textFieldSearch" layoutY="21.0" maxHeight="30.0" onKeyTyped="#searchEvent" prefWidth="250.0" promptText="Search ..." style="-fx-min-height: 30 !important;" AnchorPane.bottomAnchor="0.0" />
-                           </children>
-                        </AnchorPane>
+                        <TextField fx:id="textFieldSearch" layoutY="21.0" maxHeight="30.0" onKeyTyped="#searchEvent" prefWidth="250.0" promptText="Search ..." style="-fx-min-height: 30 !important;" AnchorPane.bottomAnchor="0.0" />
+                        <ImageView fitHeight="20.0" fitWidth="20.0" onMouseClicked="#refresh" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0">
+                           <image>
+                              <Image url="@images/refresh.jpg" />
+                           </image>
+                        </ImageView>
                      </children>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                  </HBox>
+                     <GridPane.margin>
+                        <Insets left="20.0" right="50.0" top="10.0" />
+                     </GridPane.margin>
+                  </AnchorPane>
                </children>
             </GridPane>
          </children></AnchorPane>

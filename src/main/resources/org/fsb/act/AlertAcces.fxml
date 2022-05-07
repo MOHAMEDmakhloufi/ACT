@@ -13,7 +13,7 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
-      <PasswordField fx:id="accesFinance" minHeight="30.0" minWidth="230.0" style=": ;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="80.0" />
+      <PasswordField fx:id="accesFinance" minHeight="30.0" minWidth="230.0" onAction="#permission" style=": ;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="80.0" />
       <Button layoutX="280.0" layoutY="153.0" mnemonicParsing="false" onAction="#permission" prefHeight="30.0" prefWidth="90.0" text="OK">
          <font>
             <Font name="System Bold" size="15.0" />

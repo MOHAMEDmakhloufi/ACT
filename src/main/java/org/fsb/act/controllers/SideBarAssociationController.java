@@ -49,6 +49,10 @@ public class SideBarAssociationController implements Initializable{
 		}
 		 
 	}
+	@FXML
+    void refresh() {
+		DisplayLogoAndTitre();
+    }
 	/**
 	 * if you are clicked go to compteAssociation
 	 * @param event

@@ -84,7 +84,7 @@ public class ConnxDB {
     }
 
     public static Connection getInstance(){
-        if (connexion == null)
+        //if (connexion == null)
             try {
                 new ConnxDB();
             }catch(Exception e){

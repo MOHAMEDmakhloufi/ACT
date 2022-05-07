@@ -45,7 +45,7 @@ public class DepenseService {
 		return DepenseDao.deleteDepenseFromDb(id);
 	}
 
-	public static long ajouterDepense(Depense depense) {
+	public static int ajouterDepense(Depense depense) {
 		// TODO Auto-generated method stub
 		return DepenseDao.addDepenseInDb(depense);
 	}

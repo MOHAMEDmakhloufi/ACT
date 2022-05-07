@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.fsb.act.services.AccesFinanceService;
+import org.fsb.act.validation.InputValidation;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,8 +43,11 @@ public class AlertFinanceController implements Initializable{
     		alreadyOpen= false;
     		stage.close();
     	}
-    	else
+    	else {
     		permission= false;
+    		InputValidation.showAlertErrorWithoutHeaderText("acces incorrect");
+    	}
+    		
     }
 
 }

@@ -23,3 +23,9 @@
 	-fx-text-fill: #3F2B63;
 	
 }
+.imageAnchor{
+
+	-fx-background-image: url("../images/statistic.jpg");
+	-fx-background-size: 100% 100%; 
+	
+}

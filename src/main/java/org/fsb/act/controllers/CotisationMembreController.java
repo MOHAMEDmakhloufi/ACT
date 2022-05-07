@@ -95,6 +95,10 @@ public class CotisationMembreController implements Initializable{
 		getAll();
 	}
 	@FXML
+ 	 void refresh() {
+ 		getAll();
+ 	 }
+	@FXML
 	private void displayCotisation(MouseEvent event) {
 		if (event.getClickCount() > 1) {
 			if (tableView.getSelectionModel().getSelectedItem() != null) {

@@ -43,7 +43,7 @@ public class FamilleNecessiteuseDao {
 	}
 
 	public static int deleteFamilleFromDB(long id) {
-		String requete="DELETE FROM FILSFAMILLE WHERE FAMILLE=?";
+		String requete="DELETE FROM FAMILLENECESSITEUSE WHERE id=?";
 		try {
 			pst= connection.prepareStatement(requete);
 			pst.setLong(1, id);
