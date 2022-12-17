@@ -1,5 +1,5 @@
 # ACT
-projet java
+projet java/JEE sans framework
 
 1. PRESENTATION DU PROJET
 1.1 CONTEXTE
